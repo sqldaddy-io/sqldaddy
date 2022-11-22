@@ -1,0 +1,1208 @@
+:root {
+  --green: #308F6F;
+  --light-green: #E1E9DE;
+  --super-light-green: #F3F9F4;
+  --orange: #F8B86E;
+  --red: #FB846C;
+  --light-red: #FFE8E3;
+  --white: white;
+  --black: #0F0F0F;
+  --gray: #313D34;
+  --light-gray: #999999;
+  --super-light-gray: #F3F3F7;
+  --super-light-gray-two: #D9D9D9;
+  --light-blue: #EDF3FB;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.no-background {
+  background: transparent !important;
+}
+
+b {
+  font-weight: 700;
+}
+
+.green-button {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  color: var(--white);
+  background: var(--green);
+  width: 100%;
+  border-radius: 40px;
+  padding: 15px;
+  border: 0px;
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  transition: 0.3s;
+}
+.green-button:hover {
+  background: #389A79;
+}
+@media (min-width: 769px) {
+  .green-button {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.transparent-button {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  color: var(--gray);
+  background: transparent;
+  width: 100%;
+  border-radius: 40px;
+  border: 1px solid var(--gray);
+  padding: 15px;
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+}
+.transparent-button:hover {
+  background: #389A79;
+}
+@media (min-width: 769px) {
+  .transparent-button {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.active-button {
+  background: var(--red);
+}
+
+.disabled-button {
+  background: #D9D9D9;
+  color: var(--black);
+}
+
+h1,
+h2 {
+  margin: 0px;
+  font-family: "Playfair Display";
+  font-style: normal;
+}
+
+p,
+span,
+label,
+li,
+h3,
+h4 {
+  margin: 0px;
+  font-family: "Manrope";
+  font-style: normal;
+}
+
+a {
+  font-family: "Manrope";
+  font-style: normal;
+  text-decoration: none;
+}
+
+body {
+  margin: 0px;
+}
+
+header {
+  text-align: center;
+}
+header .top-line {
+  width: auto;
+  background: #F5F4F4;
+  border: 1px solid #EAEAEA;
+  padding: 12px 60px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 768px) {
+  header .top-line {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 768px) {
+  header .top-line {
+    padding: 12px 18px;
+    flex-flow: row wrap;
+  }
+}
+header .top-line .left-box {
+  width: 210px;
+}
+@media (max-width: 768px) {
+  header .top-line .left-box {
+    width: auto;
+  }
+}
+header .top-line .left-box .logo {
+  display: flex;
+  align-items: center;
+}
+header .top-line .left-box .logo .img {
+  width: 50px;
+  height: 37px;
+  margin-right: 10px;
+  background: url("../img/logo.png") no-repeat;
+}
+@media (max-width: 768px) {
+  header .top-line .left-box .logo .img {
+    width: 45px;
+    height: 35px;
+    background-size: 100%;
+  }
+}
+header .top-line .left-box .logo p {
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 38px;
+  color: #000000;
+}
+@media (max-width: 768px) {
+  header .top-line .center-box {
+    display: none;
+  }
+}
+header .top-line .right-box {
+  width: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+@media (max-width: 768px) {
+  header .top-line .right-box {
+    width: auto;
+  }
+}
+header .top-line .right-box .switcher {
+  margin-right: 20px;
+  width: 30px;
+  height: 30px;
+  background: url("../img/moon.png") no-repeat;
+  background-size: 100%;
+  cursor: pointer;
+}
+header .top-line .right-box .switcher.dark {
+  background: url("../img/sun.png") no-repeat;
+}
+header .top-line .right-box .twitter {
+  display: flex;
+  align-items: center;
+}
+header p.select {
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 33px;
+  color: #000;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+}
+header p.select span {
+  background: #E4E4E4;
+  padding: 5px 9px 9px;
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  color: #000;
+  border-radius: 10px;
+  line-height: 0px;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  top: -2px;
+  margin-left: 5px;
+}
+header p.select span i:not(.spinner)  {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: url("../img/play.png") no-repeat;
+  position: relative;
+  top: 2px;
+}
+@media (max-width: 768px) {
+  header p.select.desctop {
+    display: none;
+  }
+}
+header p.select.mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  header p.select.mobile {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+}
+
+main .wrapper {
+  width: auto;
+  margin: 0px 60px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 768px) {
+  main .wrapper {
+    margin: 0px 8px;
+  }
+}
+main .wrapper .box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+main .wrapper .box .text-palce {
+  width: 48%;
+  display: block;
+  border: 1px solid #C6C6C6;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 70px;
+  height: fit-content;
+}
+@media (max-width: 768px) {
+  main .wrapper .box .text-palce {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+main .wrapper .box .text-palce:first-child {
+  margin-top: 0px;
+}
+main .wrapper .box .text-palce .linedwrap {
+  display: flex;
+  height: 100%;
+  width: 100% !important;
+  border: 0px solid transparent;
+  padding: 0px;
+}
+main .wrapper .box .text-palce .lines {
+  margin: 0px;
+  border-right: 0px solid transparent;
+  background: #F1F1F1;
+}
+main .wrapper .box .text-palce .lines .lineno {
+  font-family: "Rokkitt";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 23px !important;
+  color: #000000;
+}
+main .wrapper .box .text-palce .lines .lineno:first-child {
+  margin-top: 3px;
+}
+main .wrapper .box .text-palce .linedtextarea {
+  width: 100%;
+}
+main .wrapper .box .text-palce .linedtextarea textarea {
+  font-family: "Rokkitt";
+  width: 100% !important;
+  height: 100% !important;
+  padding-left: 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px !important;
+  color: #000000;
+  border: 0px;
+  background: white;
+  resize: none;
+}
+main .wrapper .box .text-palce .linedtextarea textarea:focus {
+  outline: none;
+}
+main .wrapper .box .button-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  main .wrapper .box .button-box {
+    justify-content: center;
+  }
+}
+main .wrapper .box .button-box button {
+  display: flex;
+  align-items: center;
+  background: #E4E4E4;
+  border-radius: 7px;
+  border: 0px;
+  margin-right: 10px;
+  padding: 6px 13px;
+  cursor: pointer;
+}
+main .wrapper .box .button-box button img {
+  margin-right: 5px;
+}
+main .wrapper .box .button-box button span {
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  color: #000000;
+}
+
+footer {
+  margin-top: 100px;
+  background: #F5F4F4;
+  border: 1px solid #EAEAEA;
+}
+footer .wrapper {
+  width: auto;
+  margin: 0px 0px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 60px
+}
+@media (max-width: 768px) {
+  footer .wrapper {
+    padding: 4px 18px;
+  }
+}
+footer .wrapper .center-box ul {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0px;
+  margin: 0px;
+  flex-wrap: wrap;
+}
+footer .wrapper .center-box ul li {
+  display: inline-block;
+  padding: 10px;
+  list-style: none;
+}
+footer .wrapper .center-box ul li:first-child {
+  padding-left: 0px;
+}
+footer .wrapper .center-box ul li a {
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  color: #000000;
+}
+footer .wrapper .center-box p {
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  color: #000000;
+  text-align: left;
+}
+footer .wrapper .center-box p br {
+  display: none;
+}
+@media (max-width: 768px) {
+  footer .wrapper .center-box p br {
+    display: block;
+  }
+}
+footer .wrapper .right-box a {
+  display: inline-block;
+  width: 25px;
+  height: 37px;
+}
+footer .wrapper .right-box a svg .color {
+  fill: #000 !important;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1000;
+  top: 0px;
+  left: 0px;
+  display: none;
+}
+.modal .wrappar-modal {
+  width: 100vw;
+  height: 100vh;
+}
+.modal .wrappar-modal .background-modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.44);
+}
+.modal .wrappar-modal .modal-box {
+  position: relative;
+  width: 500px;
+  height: auto;
+  left: calc(50vw - 250px);
+  top: calc(50vh - 160px);
+  background: #FFFFFF;
+  border-radius: 15px;
+  padding: 60px 40px;
+}
+@media (max-width: 768px) {
+  .modal .wrappar-modal .modal-box {
+    width: 96vw;
+    left: 2vw;
+    box-sizing: border-box;
+  }
+}
+.modal .wrappar-modal .modal-box .cross {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  cursor: pointer;
+}
+.modal .wrappar-modal .modal-box .cross:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 18px;
+  height: 2px;
+  background: #000000;
+  transform: rotate(-45deg);
+  top: 7px;
+  left: -1px;
+}
+.modal .wrappar-modal .modal-box .cross:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 18px;
+  height: 2px;
+  background: #000000;
+  transform: rotate(45deg);
+  top: 7px;
+  left: -1px;
+}
+.modal .wrappar-modal .modal-box p {
+  margin-bottom: 20px;
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #000000;
+}
+.modal .wrappar-modal .modal-box .select {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.modal .wrappar-modal .modal-box .select:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  background: #000000;
+  transform: rotate(45deg);
+  right: 17px;
+  top: 27px;
+  z-index: 1000;
+}
+.modal .wrappar-modal .modal-box .select:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  background: #000000;
+  transform: rotate(-45deg);
+  right: 11px;
+  top: 27px;
+  z-index: 1000;
+}
+.modal .wrappar-modal .modal-box .select select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1100;
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #4B4B4B;
+  width: 100%;
+  height: 53px;
+  padding: 5px 10px;
+}
+.modal .wrappar-modal .modal-box .select select:focus {
+  outline: none;
+}
+.modal .wrappar-modal .modal-box .box-radio input {
+  display: none;
+}
+.modal .wrappar-modal .modal-box .box-radio label {
+  background: #FFFFFF;
+  border-radius: 10px;
+  border: 1px solid #FFFFFF;
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+  text-align: center;
+  color: #000000;
+  margin-right: 5px;
+  padding: 8px 16px;
+  display: inline-block;
+}
+.modal .wrappar-modal .modal-box .box-radio input:checked + label {
+  border: 1px solid #000000;
+}
+.modal.open {
+  display: block;
+}
+
+.dark {
+  background: #222222;
+}
+.dark header {
+  text-align: center;
+}
+.dark header .top-line {
+  width: auto;
+  background: #2E2E2E;
+  border: 1px solid #2E2E2E;
+  padding: 12px 60px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 768px) {
+  .dark header .top-line {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .dark header .top-line {
+    padding: 12px 18px;
+    flex-flow: row wrap;
+  }
+}
+.dark header .top-line .left-box {
+  width: 210px;
+}
+@media (max-width: 768px) {
+  .dark header .top-line .left-box {
+    width: auto;
+  }
+}
+.dark header .top-line .left-box .logo {
+  display: flex;
+  align-items: center;
+}
+.dark header .top-line .left-box .logo .img {
+  width: 50px;
+  height: 37px;
+  margin-right: 10px;
+  background: url("../img/logo_white.png") no-repeat;
+}
+@media (max-width: 768px) {
+  .dark header .top-line .left-box .logo .img {
+    width: 45px;
+    height: 35px;
+    background-size: 100%;
+  }
+}
+.dark header .top-line .left-box .logo p {
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 38px;
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .dark header .top-line .center-box {
+    display: none;
+  }
+}
+.dark header .top-line .right-box {
+  width: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+@media (max-width: 768px) {
+  .dark header .top-line .right-box {
+    width: auto;
+  }
+}
+.dark header .top-line .right-box .switcher {
+  margin-right: 20px;
+  width: 30px;
+  height: 30px;
+  background: url("../img/moon.png") no-repeat;
+  background-size: 100%;
+  cursor: pointer;
+}
+.dark header .top-line .right-box .switcher.dark {
+  background: url("../img/sun.png") no-repeat;
+  background-size: 100%;
+}
+.dark header .top-line .right-box .twitter {
+  display: flex;
+  align-items: center;
+}
+.dark header p.select {
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 33px;
+  color: #fff;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+}
+.dark header p.select.mobile span {
+  background: #2E2E2E;
+}
+.dark header p.select span {
+  background: #222;
+  padding: 5px 9px 9px;
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  color: #fff;
+  border-radius: 10px;
+  line-height: 0px;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  top: -2px;
+  margin-left: 5px;
+}
+.dark header p.select span i:not(.spinner) {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: url("../img/play_white.png") no-repeat;
+  position: relative;
+  top: 2px;
+}
+@media (max-width: 768px) {
+  .dark header p.select.desctop {
+    display: none;
+  }
+}
+.dark header p.select.mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  .dark header p.select.mobile {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+}
+.dark main .wrapper {
+  width: auto;
+  margin: 0px 60px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 768px) {
+  .dark main .wrapper {
+    margin: 0px 8px;
+  }
+}
+.dark main .wrapper .box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+.dark main .wrapper .box .text-palce {
+  width: 48%;
+  display: block;
+  height: 165px;
+  border: 1px solid #3E3D3D;
+  background: #2E2E2E;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 70px;
+  height: fit-content;
+}
+@media (max-width: 768px) {
+  .dark main .wrapper .box .text-palce {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+.dark main .wrapper .box .text-palce:first-child {
+  margin-top: 0px;
+}
+.dark main .wrapper .box .text-palce .linedwrap {
+  display: flex;
+  height: 100%;
+  width: 100% !important;
+  border: 0px solid transparent;
+  padding: 0px;
+}
+.dark main .wrapper .box .text-palce .lines {
+  margin: 0px;
+  border-right: 0px solid transparent;
+  background: #3E3E3E;
+}
+.dark main .wrapper .box .text-palce .lines .lineno {
+  font-family: "Rokkitt";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 23px !important;
+  color: #fff;
+}
+.dark main .wrapper .box .text-palce .lines .lineno:first-child {
+  margin-top: 3px;
+}
+.dark main .wrapper .box .text-palce .linedtextarea {
+  width: 100%;
+}
+.dark main .wrapper .box .text-palce .linedtextarea textarea {
+  font-family: "Rokkitt";
+  width: 100% !important;
+  height: 100% !important;
+  padding-left: 10px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px !important;
+  color: #fff;
+  border: 0px;
+  background: #2E2E2E;
+  resize: none;
+}
+.dark main .wrapper .box .text-palce .linedtextarea textarea:focus {
+  outline: none;
+}
+.dark main .wrapper .box .button-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .dark main .wrapper .box .button-box {
+    justify-content: center;
+  }
+}
+.dark main .wrapper .box .button-box button {
+  display: flex;
+  align-items: center;
+  background: #2E2E2E;
+  border-radius: 7px;
+  border: 0px;
+  margin-right: 10px;
+  padding: 6px 13px;
+  cursor: pointer;
+}
+.dark main .wrapper .box .button-box button img {
+  margin-right: 5px;
+}
+.dark main .wrapper .box .button-box button span {
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  color: #fff;
+}
+.dark footer {
+  margin-top: 100px;
+  background: #2E2E2E;
+  border: 1px solid #2E2E2E;
+}
+.dark footer .wrapper {
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 60px;
+}
+@media (max-width: 768px) {
+  .dark footer .wrapper {
+    padding: 4px 18px;
+  }
+}
+.dark footer .wrapper .center-box ul {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0px;
+  margin: 0px;
+  flex-wrap: wrap;
+}
+.dark footer .wrapper .center-box ul li {
+  display: inline-block;
+  padding: 10px;
+  list-style: none;
+}
+.dark footer .wrapper .center-box ul li:first-child {
+  padding-left: 0px;
+}
+.dark footer .wrapper .center-box ul li a {
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+}
+.dark footer .wrapper .center-box p {
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  color: #fff;
+  text-align: left;
+}
+.dark footer .wrapper .center-box p br {
+  display: none;
+}
+@media (max-width: 768px) {
+  .dark footer .wrapper .center-box p br {
+    display: block;
+  }
+}
+.dark footer .wrapper .right-box a {
+  display: inline-block;
+  width: 25px;
+  height: 37px;
+}
+.dark footer .wrapper .right-box a svg .color {
+  fill: #fff !important;
+}
+.dark .modal {
+  position: fixed;
+  z-index: 1000;
+  top: 0px;
+  left: 0px;
+  display: none;
+}
+.dark .modal .wrappar-modal {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.44);
+}
+.dark .modal .wrappar-modal .background-modal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.44);
+}
+.dark .modal .wrappar-modal .modal-box {
+  position: relative;
+  width: 500px;
+  height: auto;
+  left: calc(50vw - 250px);
+  top: calc(50vh - 160px);
+  background: #2E2E2E;
+  border-radius: 15px;
+  padding: 60px 40px;
+}
+@media (max-width: 768px) {
+  .dark .modal .wrappar-modal .modal-box {
+    width: 96vw;
+    left: 2vw;
+    box-sizing: border-box;
+  }
+}
+.dark .modal .wrappar-modal .modal-box .cross {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  cursor: pointer;
+}
+.dark .modal .wrappar-modal .modal-box .cross:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 18px;
+  height: 2px;
+  background: #fff;
+  transform: rotate(-45deg);
+  top: 7px;
+  left: -1px;
+}
+.dark .modal .wrappar-modal .modal-box .cross:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 18px;
+  height: 2px;
+  background: #fff;
+  transform: rotate(45deg);
+  top: 7px;
+  left: -1px;
+}
+.dark .modal .wrappar-modal .modal-box p {
+  margin-bottom: 20px;
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #fff;
+}
+.dark .modal .wrappar-modal .modal-box .select {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.dark .modal .wrappar-modal .modal-box .select:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  background: #fff;
+  transform: rotate(45deg);
+  right: 17px;
+  top: 27px;
+  z-index: 1000;
+}
+.dark .modal .wrappar-modal .modal-box .select:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  background: #fff;
+  transform: rotate(-45deg);
+  right: 11px;
+  top: 27px;
+  z-index: 1000;
+}
+.dark .modal .wrappar-modal .modal-box .select select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1100;
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #fff;
+  width: 100%;
+  height: 53px;
+  padding: 5px 10px;
+}
+.dark .modal .wrappar-modal .modal-box .select select option{
+  background-color: #2e2e2e;
+}
+.dark .modal .wrappar-modal .modal-box .select select:focus {
+  outline: none;
+}
+.dark .modal .wrappar-modal .modal-box .box-radio input {
+  display: none;
+}
+.dark .modal .wrappar-modal .modal-box .box-radio label {
+  background: transparent;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  font-family: "Reem Kufi Fun";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+  text-align: center;
+  color: #fff;
+  margin-right: 5px;
+  padding: 8px 16px;
+  display: inline-block;
+}
+.dark .modal .wrappar-modal .modal-box .box-radio input:checked + label {
+  border: 1px solid #fff;
+}
+.dark .modal.open {
+  display: block;
+}
+
+/*# sourceMappingURL=main.css.map */
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: unset;
+}
+
+main {
+  flex: 1;
+}
+
+
+
+
+.dark h2, .dark p, .dark table, .dark a{
+  color: #fff;
+}
+
+a{
+  color: black;
+}
+
+
+
+.row-box{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.sql-box{
+  flex: 1;
+  border: 1px solid #C6C6C6;
+  height: fit-content;
+}
+
+.dark .sql-box{
+  border: 1px solid #3E3D3D;
+}
+
+
+.response-box{
+  flex: 1;
+  height: fit-content;
+}
+
+.dark .response-box{
+  color: white;
+}
+
+@media (max-width: 800px) {
+  .row-box {
+    flex-direction: column;
+  }
+  .loading-page-line {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+
+
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+
+  padding: 8px;
+}
+
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+.dark table tr:nth-child(even){background-color: rgba(242, 242, 242, 0.02);}
+
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  color: white;
+  background-color: #424242;
+}
+.dark table th {
+  background-color: rgba(242, 242, 242, 0.07);
+}
+.dark table td, .dark table th {
+  border: 1px solid #282828;
+}
+
+
+
+p.select text{
+  border: 1px solid #222;
+
+  border-radius: 5px;
+  padding: 0 7px;
+}
+
+
+.dark p.select text{
+  border: 1px solid #9d9d9d;
+
+}
+
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+
+.response-box blockquote{
+  color: #2E2E2E;padding-left: 0.6rem;
+  border-left: 4px solid #2E2E2E;
+  margin-left: 0;
+}
+
+
+.dark .response-box blockquote{
+  color: #ffffff;padding-left: 0.6rem;
+  border-left: 4px solid #ffffff;
+  margin-left: 0;
+}
+
+
+
+.response-box h5 + p{
+  color: #f08080;padding-left: 0.6rem;
+  border-left: 4px solid #f08080;
+  margin-left: 0;
+}
+
+
+.dark .response-box h5 + p{
+  color: #f08080;padding-left: 0.6rem;
+  border-left: 4px solid #f08080;
+  margin-left: 0;
+}

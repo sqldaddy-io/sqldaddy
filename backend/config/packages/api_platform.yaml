@@ -1,0 +1,14 @@
+api_platform:
+  messenger:
+    enabled: true
+  defaults:
+    pagination_enabled: false
+  title: 'API for sqldaddy.io'
+  version: '1.0.0'
+  patch_formats:
+    json: [ 'application/merge-patch+json' ]
+  formats:
+    json: [ 'application/json' ]
+    jsonld: [ 'application/ld+json' ]
+    html: [ 'text/html' ]
+    form: [ 'multipart/form-data' ]

@@ -1,0 +1,42 @@
+<template>
+  <SandBoxList/>
+</template>
+
+<script>
+import {mapActions} from 'vuex'
+import SandBoxList from "@/views/SandBox/list";
+
+export default {
+  'name': 'AppIndex',
+  components: {SandBoxList},
+  created() {
+    this.loadDatabases();
+    if (this.$route?.params?.path) {
+      this.setPathPage(this.$route.params.path);
+    }
+  },
+  watch: {
+    '$route.params.path': function () {
+      if (this.$route.params.path && this.$route.params.path !== this.$store.state.sandbox.page.path) {
+        return   this.setPathPage(this.$route.params.path);
+      }
+      this.initMercure();
+    },
+    '$store.state.error': function () {
+      this.$store.state.sandbox.isLoading = false;
+      this.$store.state.sandbox.isLoadingContent = false;
+    }
+  },
+  methods: {
+    ...mapActions({
+      'loadDatabases': 'databases/loadDatabases',
+      'setPathPage': 'sandbox/setPathPage',
+      'initMercure': 'sandbox/initMercure'
+    }),
+  },
+}
+</script>
+
+<style scoped>
+
+</style>
