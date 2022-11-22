@@ -15,6 +15,7 @@
 /frontend/.DS_Store
 /frontend/node_modules
 /frontend/dist
+/frontend/src/config.js
 /frontend/.env.local
 /frontend/.env.*.local
 /frontend/npm-debug.log*
