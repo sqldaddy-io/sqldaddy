@@ -126,8 +126,8 @@ export const sandboxModule = {
             };
             API.get(config.hostname + '/api/pages/' + state.page.path, axiosConfig).then((response) => {
                 commit('setPage', response.data);
-                commit('setLoadingContent', false);
                 dispatch('initMercure')
+                commit('setLoadingContent', false);
             }).catch((err) => {
                 commit('setError', err.response?.data?.message, {root: true});
                 if (!state.error) {
@@ -160,6 +160,7 @@ export const sandboxModule = {
             delete request.id;
             API.post(config.hostname + '/api/pages', request, axiosConfig).then((response) => {
                 commit('setPage', response.data);
+                dispatch('initMercure');
                 router.push({name: 'page:index', params: {path: state.page.path}})
             }).catch((err) => {
                 commit('setError', err.response?.data?.message, {root: true});
@@ -179,9 +180,12 @@ export const sandboxModule = {
             };
             let request = Object.assign({}, state.page);
             request.databaseVersion = '/api/database_versions/' + state.page.databaseVersion.id;
-
+            Object.values(request.scripts).forEach(script => {
+                script.response = [];
+            });
             API.put(config.hostname + '/api/pages/' + request.path, request, axiosConfig).then((response) => {
                 commit('setPage', response.data);
+                dispatch('initMercure');
                 router.push({name: 'page:index', params: {path: state.page.path}})
             }).catch((err) => {
                 commit('setError', err.response?.data?.message, {root: true});

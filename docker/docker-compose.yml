@@ -117,7 +117,7 @@ services:
       POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
       POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
     networks:
-     - app-network
+      - app-network
 
   postgres13:
     image: postgres:13-alpine
@@ -197,7 +197,7 @@ services:
     image: mysql:5.7
     container_name: mysql57
     restart: unless-stopped
-    command: ["mysqld","--explicit_defaults_for_timestamp"]
+    command: [ "mysqld","--explicit_defaults_for_timestamp" ]
     ports:
       - "33057:3306"
     environment:

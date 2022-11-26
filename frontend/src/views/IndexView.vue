@@ -16,12 +16,6 @@ export default {
     }
   },
   watch: {
-    '$route.params.path': function () {
-      if (this.$route.params.path && this.$route.params.path !== this.$store.state.sandbox.page.path) {
-        return   this.setPathPage(this.$route.params.path);
-      }
-      this.initMercure();
-    },
     '$store.state.error': function () {
       this.$store.state.sandbox.isLoading = false;
       this.$store.state.sandbox.isLoadingContent = false;
