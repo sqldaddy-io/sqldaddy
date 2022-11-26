@@ -172,7 +172,7 @@ header .top-line .left-box .logo p {
   color: #000000;
 }
 @media (max-width: 768px) {
-  header .top-line .center-box {
+  header .top-line .left-box {
     display: none;
   }
 }
@@ -642,7 +642,7 @@ footer .wrapper .right-box a svg .color {
   color: #fff;
 }
 @media (max-width: 768px) {
-  .dark header .top-line .center-box {
+  .dark header .top-line .left-box {
     display: none;
   }
 }
@@ -1112,7 +1112,7 @@ a{
 
 @media (max-width: 800px) {
   .row-box {
-    flex-direction: column;
+    display: block;
   }
   .loading-page-line {
     width: 100%;
@@ -1205,4 +1205,10 @@ p.select text{
   color: #f08080;padding-left: 0.6rem;
   border-left: 4px solid #f08080;
   margin-left: 0;
+}
+
+header{
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }

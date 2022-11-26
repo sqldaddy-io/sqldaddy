@@ -10,11 +10,9 @@
           <div class="img"></div>
             <p>daddy.io</p>
         </router-link>
-
-
       </div>
       <div class="center-box">
-        <TheDatabase  v-if="$store.state.sandbox.isLoadingContent === false"   @showDialogDatabase="showDialogDatabase"  class="desctop"/>
+        <TheDatabase  v-if="$store.state.sandbox.isLoadingContent === false"   @showDialogDatabase="showDialogDatabase"/>
       </div>
       <div class="right-box">
         <div class="switcher">
@@ -24,7 +22,7 @@
         </a>
       </div>
     </div>
-    <TheDatabase  v-if="$store.state.sandbox.isLoadingContent === false"   @showDialogDatabase="showDialogDatabase" class="mobile"/>
+<!--    <TheDatabase  v-if="$store.state.sandbox.isLoadingContent === false"   @showDialogDatabase="showDialogDatabase" class="mobile"/>-->
   </header>
   <TheDialog v-model:show="dialogDatabaseVisible"></TheDialog>
 </template>

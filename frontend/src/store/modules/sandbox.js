@@ -113,7 +113,7 @@ export const sandboxModule = {
                 state.mercureEventSource = new EventSource(server);
                 state.mercureEventSource.onmessage = event => {
                     commit('setPage', JSON.parse(event.data));
-                }
+                };
             }
         },
         loadPage({state, commit, dispatch}) {

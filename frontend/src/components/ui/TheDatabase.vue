@@ -10,10 +10,7 @@
       <span><i></i>&nbsp;go to console</span>
     </router-link>
   </p>
-
-
 </template>
-
 <script>
 import {mapActions, mapGetters} from 'vuex'
 import TheRunButton from "@/components/ui/TheRunButton";

@@ -1,14 +1,14 @@
 <template>
-   <span v-if="$store.state.sandbox.isLoading===false" @click="this.initPage"><i></i>&nbsp;run </span>
-  <span v-else> <i class="spinner"></i>&nbsp;&nbsp;executing</span>
-
+  <span v-if="$store.state.sandbox.isLoading===false" @click="this.initPage"><i></i>&nbsp;run </span>
+  <span v-else> <i class="spinner"></i>&nbsp;&nbsp;run</span>
 </template>
 
 <script>
 import {mapActions} from 'vuex'
+
 export default {
   name: 'TheRunButton',
-  methods:{
+  methods: {
     ...mapActions({
       'initPage': 'sandbox/initPage'
     }),
@@ -24,25 +24,28 @@ header p.select span i.spinner {
   position: relative;
   top: 2px;
 }
-.spinner{
+
+.spinner {
   --spinner_border: #000000;
   --border-top-color: #000000;
   --border-bottom-color: #80ffdb;
   --border-right-color: transparent;
   --border-left-color: transparent;
 }
-.dark .spinner{
+
+.dark .spinner {
   --spinner_border: #dddf00;
   --border-top-color: #fcab41;
   --border-bottom-color: #80ffdb;
   --border-right-color: transparent;
   --border-left-color: transparent;
 }
+
 .spinner {
   width: 1.5rem;
   height: 1.5rem;
   display: inline-block;
-  border:  3px solid var(--spinner_border);
+  border: 3px solid var(--spinner_border);
   border-top-color: transparent;
   border-bottom-color: transparent;
   border-radius: 50%;
@@ -56,9 +59,9 @@ header p.select span i.spinner {
   50% {
     transform: rotate(180deg);
     border-top-color: var(--border-top-color);
-    border-bottom-color:var(--border-bottom-color);
+    border-bottom-color: var(--border-bottom-color);
     border-right-color: var(--border-right-color);
-    border-left-color:var(--border-left-color);
+    border-left-color: var(--border-left-color);
   }
   100% {
     transform: rotate(360deg);
