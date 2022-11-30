@@ -98,139 +98,138 @@ services:
     networks:
       - app-network
 
-
   postgres14:
-    image: postgres:14-alpine
-    container_name: postgres14
-    restart: unless-stopped
-    ports:
-      - "54314:5432"
-    environment:
-      POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
-      POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
-    networks:
-      - app-network
+   image: postgres:14-alpine
+   container_name: postgres14
+   restart: unless-stopped
+   ports:
+     - "54314:5432"
+   environment:
+     POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
+     POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
+   networks:
+     - app-network
 
   postgres13:
-    image: postgres:13-alpine
-    container_name: postgres13
-    restart: unless-stopped
-    ports:
-      - "54313:5432"
-    environment:
-      POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
-      POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
-    networks:
-      - app-network
+   image: postgres:13-alpine
+   container_name: postgres13
+   restart: unless-stopped
+   ports:
+     - "54313:5432"
+   environment:
+     POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
+     POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
+   networks:
+     - app-network
 
   postgres12:
-    image: postgres:12-alpine
-    container_name: postgres12
-    restart: unless-stopped
-    ports:
-      - "54312:5432"
-    environment:
-      POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
-      POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
-    networks:
-      - app-network
+   image: postgres:12-alpine
+   container_name: postgres12
+   restart: unless-stopped
+   ports:
+     - "54312:5432"
+   environment:
+     POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
+     POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
+   networks:
+     - app-network
 
 
   postgres11:
-    image: postgres:11-alpine
-    container_name: postgres11
-    restart: unless-stopped
-    ports:
-      - "54311:5432"
-    environment:
-      POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
-      POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
-    networks:
-      - app-network
+   image: postgres:11-alpine
+   container_name: postgres11
+   restart: unless-stopped
+   ports:
+     - "54311:5432"
+   environment:
+     POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
+     POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
+   networks:
+     - app-network
 
   postgres10:
-    image: postgres:10-alpine
-    container_name: postgres10
-    restart: unless-stopped
-    ports:
-      - "54310:5432"
-    environment:
-      POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
-      POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
-    networks:
-      - app-network
+   image: postgres:10-alpine
+   container_name: postgres10
+   restart: unless-stopped
+   ports:
+     - "54310:5432"
+   environment:
+     POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
+     POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
+   networks:
+     - app-network
 
   postgres9.6:
-    image: postgres:9.6-alpine
-    container_name: postgres9.6
-    restart: unless-stopped
-    ports:
-      - "54396:5432"
-    environment:
-      POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
-      POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
-    networks:
-      - app-network
+   image: postgres:9.6-alpine
+   container_name: postgres9.6
+   restart: unless-stopped
+   ports:
+     - "54396:5432"
+   environment:
+     POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
+     POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
+   networks:
+     - app-network
 
   mysql8:
-    image: mysql:8.0
-    container_name: mysql8
-    restart: unless-stopped
-    ports:
-      - "33068:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: ${SANDBOX_MYSQL_PASSWORD}
-    networks:
-      - app-network
+   image: mysql:8.0
+   container_name: mysql8
+   restart: unless-stopped
+   ports:
+     - "33068:3306"
+   environment:
+     MYSQL_ROOT_PASSWORD: ${SANDBOX_MYSQL_PASSWORD}
+   networks:
+     - app-network
 
 
 
   mysql57:
-    image: mysql:5.7
-    container_name: mysql57
-    restart: unless-stopped
-    command: [ "mysqld","--explicit_defaults_for_timestamp" ]
-    ports:
-      - "33057:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: ${SANDBOX_MYSQL_PASSWORD}
-    networks:
-      - app-network
+   image: mysql:5.7
+   container_name: mysql57
+   restart: unless-stopped
+   command: [ "mysqld","--explicit_defaults_for_timestamp" ]
+   ports:
+     - "33057:3306"
+   environment:
+     MYSQL_ROOT_PASSWORD: ${SANDBOX_MYSQL_PASSWORD}
+   networks:
+     - app-network
 
 
   mysql56:
-    image: mysql:5.6
-    container_name: mysql56
-    restart: unless-stopped
-    ports:
-      - "33066:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: ${SANDBOX_MYSQL_PASSWORD}
-    networks:
-      - app-network
+   image: mysql:5.6
+   container_name: mysql56
+   restart: unless-stopped
+   ports:
+     - "33066:3306"
+   environment:
+     MYSQL_ROOT_PASSWORD: ${SANDBOX_MYSQL_PASSWORD}
+   networks:
+     - app-network
 
 
 
   mysql55:
-    image: mysql:5.5
-    container_name: mysql55
-    restart: unless-stopped
-    ports:
-      - "33065:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: ${SANDBOX_MYSQL_PASSWORD}
-    networks:
-      - app-network
+   image: mysql:5.5
+   container_name: mysql55
+   restart: unless-stopped
+   ports:
+     - "33065:3306"
+   environment:
+     MYSQL_ROOT_PASSWORD: ${SANDBOX_MYSQL_PASSWORD}
+   networks:
+     - app-network
 
 
 
   certbot:
-    container_name: certbot
-    image: certbot/certbot:latest
-    volumes:
-      - ./certbot/www/:/var/www/certbot/:rw
-      - ./certbot/conf/:/etc/letsencrypt/:rw
-    entrypoint: /bin/sh -c "trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;"
+   container_name: certbot
+   image: certbot/certbot:latest
+   volumes:
+     - ./certbot/www/:/var/www/certbot/:rw
+     - ./certbot/conf/:/etc/letsencrypt/:rw
+   entrypoint: /bin/sh -c "trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;"
 
 
 

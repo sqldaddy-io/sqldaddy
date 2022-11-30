@@ -1,6 +1,7 @@
 import { createStore } from 'vuex'
 import {databasesModule} from "@/store/modules/databases";
 import {sandboxModule} from "@/store/modules/sandbox";
+import {statisticsModule} from "@/store/modules/statistics";
 
 
 export default createStore({
@@ -32,6 +33,7 @@ export default createStore({
   },
   modules: {
     databases: databasesModule,
+    statistics: statisticsModule,
     sandbox: sandboxModule
   }
 })

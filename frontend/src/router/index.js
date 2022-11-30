@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// import store from "@/store";
 const routes = [
   {
     path: '/',
@@ -7,9 +6,9 @@ const routes = [
     component: () => import('../views/IndexView.vue'),
   },
   {
-    path: '/:path',
+    path: '/:path?',
     name: 'page:index',
-    component: () => import('../views/IndexView.vue'),
+    component: () => import('../views/SandBox/index.vue'),
   },
   {
     path: '/about',
@@ -27,7 +26,13 @@ const router = createRouter({
         el: to.hash,
       };
     }
-  },
+  }
 })
+router.beforeEach((to,from, next) => {
 
+  if(to.name === 'home:index' && to.query?.database !== undefined){
+    return next({ name: 'page:index', query: to.query});
+  }
+  return next();
+})
 export default router

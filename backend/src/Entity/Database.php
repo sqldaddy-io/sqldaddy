@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use App\Action\StatisticController;
 use App\Repository\DatabaseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -15,7 +16,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     operations: [
         new Get(),
-        new GetCollection()
+        new GetCollection(),
+        new GetCollection(
+            uriTemplate: '/statistics',controller: StatisticController::class
+        )
     ],
     normalizationContext: ['groups'=>['database_read']],
     order: ['sort' => 'ASC'],

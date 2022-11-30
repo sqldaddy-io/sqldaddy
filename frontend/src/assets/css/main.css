@@ -88,11 +88,17 @@ b {
 
 h1,
 h2 {
-  margin: 0px;
-  font-family: "Playfair Display";
+  margin: 0;
+  font-family: "Reem Kufi Fun", serif;
   font-style: normal;
+  color: #000000;
 }
-
+.dark h1,
+.dark h2 {
+  font-family: "Reem Kufi Fun", serif;
+  font-style: normal;
+  color: #FFFFFF;
+}
 p,
 span,
 label,
@@ -126,6 +132,7 @@ header .top-line {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0 1px 3px rgba(135, 139, 147, 0.2);
 }
 @media (max-width: 768px) {
   header .top-line {
@@ -171,11 +178,7 @@ header .top-line .left-box .logo p {
   line-height: 38px;
   color: #000000;
 }
-@media (max-width: 768px) {
-  header .top-line .left-box {
-    display: none;
-  }
-}
+
 header .top-line .right-box {
   width: 210px;
   display: flex;
@@ -641,11 +644,7 @@ footer .wrapper .right-box a svg .color {
   line-height: 38px;
   color: #fff;
 }
-@media (max-width: 768px) {
-  .dark header .top-line .left-box {
-    display: none;
-  }
-}
+
 .dark header .top-line .right-box {
   width: 210px;
   display: flex;
@@ -1117,6 +1116,9 @@ a{
   .loading-page-line {
     width: 100%;
     justify-content: center;
+  }
+  header .top-line .left-box.db_loaded{
+    display: none;
   }
 }
 

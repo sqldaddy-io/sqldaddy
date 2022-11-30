@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Page;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Exception;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -23,8 +24,27 @@ class PageRepository extends ServiceEntityRepository
 
     public function getEm(): \Doctrine\ORM\EntityManagerInterface
     {
-        return   $this->getEntityManager();
+        return $this->getEntityManager();
 
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function getStatistics(): array
+    {
+        $sql = "select d.id, d.name,
+                     count(p.id) as all_time,
+                         count(p.id) filter(WHERE p.create_at > current_date - interval '90' day)  as last_90_days,
+                             count(p.id) filter(WHERE p.create_at > current_date - interval '7' day)  as last_7_days
+                from page as p
+                     left join database_version as dv on dv.id = p.database_version_id
+                         left join database as d on d.id = dv.database_id
+                group by d.id";
+
+        $stmt = $this->getEntityManager()->getConnection()->prepare($sql);
+
+        return $stmt->executeQuery()->fetchAllAssociative();
     }
 
     public function save(Page $entity, bool $flush = false): void

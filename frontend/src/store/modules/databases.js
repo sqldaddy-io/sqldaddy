@@ -16,7 +16,6 @@ export const databasesModule = {
             state.databases = data;
         },
         setDatabaseToSandBox(state, [db_id, version_id = null])  {
-            console.log(db_id, version_id);
             let database = (state.databases).find(x => x.id === db_id);
             let version = null;
             if(version_id === null){

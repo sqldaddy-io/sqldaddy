@@ -1,5 +1,5 @@
 <template>
-  <div class="box" >
+  <div class="box">
     <div class="info-line loading-page-line"  v-if="$store.state.sandbox.isLoadingContent" style="margin-bottom: 20px;">
       <i class="spinner"></i>&nbsp;&nbsp; <p>Loading io . . .</p>
     </div>

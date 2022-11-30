@@ -18,13 +18,13 @@
     <meta property="og:url" content="https://sqldaddy.io/">
     <meta property="og:title" :content="$store.state.meta.title">
     <meta property="og:description" :content="$store.state.meta.description">
-    <meta property="og:image" content="@/assets/img/ogimage.png">
+    <meta property="og:image" content="https://sqldaddy.io/images/ogimage.png">
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://sqldaddy.io/">
     <meta property="twitter:title" :content="$store.state.meta.title">
     <meta property="twitter:description" :content="$store.state.meta.description">
-    <meta property="twitter:image" content="@/assets/img/ogimage.png">
+    <meta property="twitter:image" content="https://sqldaddy.io/images/ogimage.png">
   </Teleport>
   <TheHeader/>
   <main>
