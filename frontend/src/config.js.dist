@@ -1,6 +1,7 @@
 export default {
     hostname: 'http://localhost',
     statuses: {
+        'CREATED': 'Created',
         'PENDING': 'Pending',
         'IN_PROGRESS': 'In progress',
         'COMPLETED_ERROR': 'Completed with error',

@@ -99,12 +99,17 @@ export const sandboxModule = {
             let server = new URL(config.hostname + '/.well-known/mercure');
             server.searchParams.append('topic', '/pages/' + state.page.path);
             if (state.mercureEventSource) {
-                state.mercureEventSource.close()
+                if (state.mercureEventSource.url !== server.href) {
+                    state.mercureEventSource.close();
+                }else {
+                    return false;
+                }
             }
             state.mercureEventSource = new EventSource(server);
             state.mercureEventSource.onmessage = event => {
                 dispatch('setPage', JSON.parse(event.data));
             };
+            return true;
         },
         setPage({state, commit, dispatch}, page){
             commit('setPage', page);
