@@ -27,15 +27,6 @@ services:
         bind:
             $decorated: '@api_platform.doctrine.orm.state.persist_processor'
 
-    App\EventListener\PagePostPersistListener:
-        tags:
-            -
-                name: 'doctrine.orm.entity_listener'
-                event: 'postPersist'
-                entity: 'App\Entity\Page'
-
-
-
     App\EventListener\PagePostUpdateListener:
         tags:
             -

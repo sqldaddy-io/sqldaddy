@@ -1,6 +1,6 @@
 <template>
  <div>
-   <h1 class="title">Databases Environments</h1>
+   <h1 class="title">Database Environments</h1>
    <div class="statistic_list">
      <StatisticItem
          v-for="(statistic, index) in $store.getters['statistics/getStatistics']"

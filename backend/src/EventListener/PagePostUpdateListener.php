@@ -2,33 +2,34 @@
 
 namespace App\EventListener;
 
+use App\Config\PageStatus;
 use App\Entity\Page;
-use Symfony\Component\Mercure\HubInterface;
-use Symfony\Component\Mercure\Update;
-use Symfony\Component\Serializer\SerializerInterface;
+use App\Message\PageMessage;
+use App\Service\PagePublish;
+use Exception;
+use Symfony\Component\Messenger\MessageBusInterface;
 
 class PagePostUpdateListener
 {
 
-    private HubInterface $hub;
-    private SerializerInterface $serializer;
+    private PagePublish $publish;
+    private MessageBusInterface $messageBus;
 
-    /**
-     * @param HubInterface $hub
-     * @param SerializerInterface $serializer
-     */
-    public function __construct(HubInterface $hub, SerializerInterface $serializer)
+    public function __construct(PagePublish $publish, MessageBusInterface $messageBus)
     {
-        $this->hub = $hub;
-        $this->serializer = $serializer;
+        $this->publish = $publish;
+        $this->messageBus = $messageBus;
     }
 
+    /**
+     * @throws Exception
+     */
     public function postUpdate(Page $page): void
     {
-        $update = new Update(
-            '/pages/'.$page->getPath(),
-            $this->serializer->serialize($page, 'json', ['groups' => 'page_read'])
-        );
-        $this->hub->publish($update);
+        match ($page->getStatus()) {
+            PageStatus::CREATED => throw new Exception('Nothing to do'),
+            PageStatus::PENDING => $this->messageBus->dispatch(new PageMessage($page->getPath())),
+            default => ($this->publish)($page),
+        };
     }
 }

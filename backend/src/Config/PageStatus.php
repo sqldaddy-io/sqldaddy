@@ -4,6 +4,7 @@ namespace App\Config;
 
 enum PageStatus:string
 {
+    case CREATED = 'Created';
     case PENDING = 'Pending';
     case IN_PROGRESS = 'In progress';
     case COMPLETED_ERROR = 'Completed with error';

@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: DatabaseVersionRepository::class)]
 #[ApiResource(
     operations: [
-        new Get()
+        new Get(normalizationContext: ['groups' => ['database_read', 'page_read']]),
     ],
     paginationEnabled: false
 )]

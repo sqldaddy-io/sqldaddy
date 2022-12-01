@@ -53,8 +53,8 @@ cache:
 messenger_up:
 	${DOCKER_COMPOSE} exec -u www-data backend bin/console messenger:consume async --limit=20
 
-messenger_restart:
-	${DOCKER_COMPOSE} exec -u www-data backend bin/console messenger:consume async --limit=20
+messenger_stop:
+	${DOCKER_COMPOSE} exec -u www-data backend bin/console messenger:stop-workers
 
 # gen_ssl:
 #     docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d sqldaddy.io

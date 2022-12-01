@@ -25,7 +25,6 @@ export default {
     ...mapActions({
       'loadDatabases': 'databases/loadDatabases',
       'setPathPage': 'sandbox/setPathPage',
-      'initMercure': 'sandbox/initMercure'
     }),
   },
 }

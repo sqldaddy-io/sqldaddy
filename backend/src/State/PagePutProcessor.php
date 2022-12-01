@@ -50,7 +50,7 @@ final class PagePutProcessor implements ProcessorInterface
         if (($this->pageCompare)($data)) {
             $this->disconnect();
             $data->setPath(($this->urlGenerate)());
-            $data->setStatus(PageStatus::PENDING);
+            $data->setStatus(PageStatus::CREATED);
             $data->setCreateAt(new \DateTimeImmutable('now'));
             ($this->emptyScriptsRemove)($data);
             return $this->decorated->process($data, $operation, $uriVariables, $context);

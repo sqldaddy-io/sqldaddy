@@ -6,7 +6,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Config\PageStatus;
@@ -21,12 +21,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: PageRepository::class)]
 #[ApiResource(
     operations: [
-        new Get(),
-        new Post(processor: PagePostProcessor::class),
-        new Put(processor: PagePutProcessor::class),
+        new Get(normalizationContext: ['groups' => ['page_read']]),
+        new Post(normalizationContext: ['groups' => ['page_read']], denormalizationContext: ['groups' => ['page_write']],  processor: PagePostProcessor::class),
+        new Put(normalizationContext: ['groups' => ['page_read']], denormalizationContext: ['groups' => ['page_write']], processor: PagePutProcessor::class),
+        new Patch(normalizationContext: ['groups' => ['page_read']], denormalizationContext: ['groups' => ['patch']]),
     ],
-    normalizationContext: ['groups' => ['page_read']],
-    denormalizationContext: ['groups' => ['page_write']],
     paginationEnabled: false
 )]
 class Page
@@ -56,8 +55,8 @@ class Page
     private Collection $scripts;
 
     #[ORM\Column]
-    #[Groups(['page_read'])]
-    private PageStatus $status = PageStatus::PENDING;
+    #[Groups(['page_read', 'patch'])]
+    private PageStatus $status = PageStatus::CREATED;
 
 
 //
