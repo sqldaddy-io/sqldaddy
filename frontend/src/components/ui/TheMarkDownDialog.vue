@@ -18,6 +18,7 @@
 import {mapGetters} from 'vuex'
 import toggleMixin from "@/mixins/toggleMixin";
 import json2md from "json2md";
+import config from "@/config";
 
 export default {
   name: 'TheMarkDownDialog',
@@ -33,11 +34,15 @@ export default {
       Object.values(this.$store.state.sandbox.page.scripts).forEach(value => {
         data += json2md({
           code: {
-            language: 'sql',
             content: value.request
           }
         });
         data += this.getScriptResponse(value.response);
+
+      });
+      data +=
+      json2md({
+        p: 'Demo in [sqldaddy.io]('+ config.hostname + '/'+this.$store.state.sandbox.page.path +')'
       });
       return data;
     },
