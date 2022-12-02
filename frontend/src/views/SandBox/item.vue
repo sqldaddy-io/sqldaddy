@@ -21,7 +21,6 @@
 <script>
 
 import { mapGetters} from 'vuex'
-const json2md = require("json2md")
 import { EditorView, basicSetup} from "codemirror";
 import { Codemirror } from 'vue-codemirror'
 import Markdown from 'vue3-markdown-it';
@@ -43,45 +42,14 @@ export default {
   computed: {
     ...mapGetters({
       'getScriptRequest': 'sandbox/getScriptRequest',
+      'getScriptResponse': 'sandbox/getScriptResponse',
     }),
     updateScriptRequest: {
       get() { return this.getScriptRequest(this.index) },
       set(value) { this.$store.commit('sandbox/updateScriptRequest', {id:this.index, value: value } ) }
     },
     response: {
-      get() { return this.getResponseMarkdown() }
-    }
-  },
-  methods:{
-    getResponseMarkdown(){
-      let responses = [];
-      Object.values(this.script.response).forEach(value=> {
-        if(typeof value === 'object' || value instanceof Object){
-
-          let without_result = false;
-          Object.values(value).forEach(value_row => {
-            if(Object.values(value_row).length === 0){
-               without_result = true;
-            }
-          });
-          if( Object.values(value).length === 0 || without_result === true){
-            responses.push({ blockquote: "completed " + ((Object.keys(value).length>0)?Object.keys(value).length:'') });
-          }else {
-            let header = [];
-            Object.values(value).forEach(value_row => {
-              header = Object.keys(value_row);
-            });
-            responses.push({ table: { headers: header, rows: JSON.parse((JSON.stringify(value)).toString().replaceAll('null','"null"')) }, hr:'' });
-          }
-
-        }else if( typeof value === 'string' || value instanceof String){
-          responses.push({ h5: value});
-        }
-      });
-      if(responses.length>0){
-        return json2md(responses);
-      }
-      return '';
+      get() { return this.getScriptResponse(this.script.response)}
     }
   },
   setup() {
@@ -122,5 +90,4 @@ export default {
   color: #f08080;padding-left: 0.3rem;
   border-left: 3px solid #f08080;
 }
-
 </style>

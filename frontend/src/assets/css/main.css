@@ -1214,3 +1214,9 @@ header{
   top: 0;
   z-index: 999;
 }
+
+
+i.unicode{
+  font-size: 25px;
+  font-style: normal;
+}

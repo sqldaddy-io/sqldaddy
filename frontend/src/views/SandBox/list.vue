@@ -15,18 +15,26 @@
       />
     </transition-group>
     <div class="button-box">
-      <button @click="$store.commit('sandbox/addScriptRow')"><img src="@/assets/img/add.png" alt="img"><span>input</span></button>
-      <button  @click="resetPage" ><span>reset</span></button>
+      <button @click="$store.commit('sandbox/addScriptRow')"><span><i class="unicode">+</i>&nbsp;&nbsp;input</span></button>
+      <button  @click="showMarkDownDialog" ><span><i class="unicode">⎘</i>&nbsp;&nbsp;markdown</span></button>
+      <button  @click="resetPage" ><span><i class="unicode">⑃</i>&nbsp;&nbsp;reset</span></button>
     </div>
+    <TheMarkDownDialog v-model:show="markDownDialogShow"/>
   </div>
 </template>
 
 <script>
 import {mapActions} from 'vuex'
 import SandBoxItem from "@/views/SandBox/item";
+import TheMarkDownDialog from "@/components/ui/TheMarkDownDialog";
 export default {
   name: 'SandBoxList',
-  components: {SandBoxItem},
+  components: {TheMarkDownDialog, SandBoxItem},
+  data() {
+    return {
+      markDownDialogShow: false
+    }
+  },
   created() {
     if( this.$store.state.sandbox.page.scripts.length === 0){
       this.$store.commit('sandbox/addScriptRow');
@@ -35,7 +43,10 @@ export default {
   methods: {
     ...mapActions({
       'resetPage': 'sandbox/resetPage'
-    })
+    }),
+    showMarkDownDialog(){
+     this.markDownDialogShow = true;
+    }
   },
 }
 </script>

@@ -52,7 +52,6 @@ export default {
       if(this.$store.state.sandbox.isLoading === false){
         this.dialogDatabaseVisible = true
       }
-
     }
   }
 

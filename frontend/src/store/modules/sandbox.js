@@ -1,7 +1,7 @@
 import API from "@/api";
 import router from "@/router";
 import config from "@/config";
-
+import json2md from "json2md";
 export const sandboxModule = {
     state: () => ({
         'isLoadingContent': false, // for loading content
@@ -15,6 +15,36 @@ export const sandboxModule = {
     getters: {
         getScriptRequest: (state) => (index) => {
             return state.page.scripts[index].request;
+        },
+        getScriptResponse: () => (data) => {
+            let responses = [];
+            Object.values(data).forEach(value=> {
+                if(typeof value === 'object' || value instanceof Object){
+
+                    let without_result = false;
+                    Object.values(value).forEach(value_row => {
+                        if(Object.values(value_row).length === 0){
+                            without_result = true;
+                        }
+                    });
+                    if( Object.values(value).length === 0 || without_result === true){
+                        responses.push({ blockquote: "completed " + ((Object.keys(value).length>0)?Object.keys(value).length:'') });
+                    }else {
+                        let header = [];
+                        Object.values(value).forEach(value_row => {
+                            header = Object.keys(value_row);
+                        });
+                        responses.push({ table: { headers: header, rows: JSON.parse((JSON.stringify(value)).toString().replaceAll('null','"null"')) }, hr:'' });
+                    }
+
+                }else if( typeof value === 'string' || value instanceof String){
+                    responses.push({ h5: value});
+                }
+            });
+            if(responses.length>0){
+                return json2md(responses);
+            }
+            return '';
         },
         getDatabaseName: (state) => {
             if(state.page?.databaseVersion?.database?.name === undefined){
@@ -79,6 +109,9 @@ export const sandboxModule = {
     actions: {
 
         resetPage({state, commit}) {
+            if(!confirm('Are you sure? This will remove all existing Schema and Query SQL.')){
+                return false;
+            }
             if (state.mercureEventSource) {
                 state.mercureEventSource.close()
             }
