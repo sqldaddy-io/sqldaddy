@@ -137,7 +137,23 @@
 
   </div>
 </template>
+<script>
 
+import {mapActions} from "vuex";
+export default {
+  'name': 'AboutView',
+  created() {
+    this.setMetaTitle('About');
+    this.setMetaDescription('Information about how the application works and the technologies used that allow you to run multiple database sandboxes');
+  },
+  methods: {
+    ...mapActions({
+      'setMetaTitle': 'setMetaTitle',
+      'setMetaDescription': 'setMetaDescription',
+    }),
+  },
+}
+</script>
 <style scoped>
 h1, h2, h3 {
   line-height: 40px;

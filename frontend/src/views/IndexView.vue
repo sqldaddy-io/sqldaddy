@@ -10,11 +10,18 @@ export default {
   'name': 'IndexView',
   components: {StatisticList},
   created() {
-    this.loadStatistics();
+    this.setMetaTitle(null);
+    this.setMetaDescription(null);
+  },
+  mounted() {
+
     this.loadDatabases();
+    this.loadStatistics();
   },
   methods: {
     ...mapActions({
+      'setMetaTitle': 'setMetaTitle',
+      'setMetaDescription': 'setMetaDescription',
       'loadDatabases': 'databases/loadDatabases',
       'loadStatistics': 'statistics/loadStatistics'
     }),

@@ -8,6 +8,9 @@ export const databasesModule = {
     getters: {
         getDatabases: state => state.databases,
         getDatabase:(state) => (id) => {
+            if(!state.databases){
+                return [];
+            }
          return (state.databases).find(x => x.id === id);
        },
     },
@@ -39,9 +42,7 @@ export const databasesModule = {
             };
             API.get(config.hostname + '/api/databases',  axiosConfig).then((response) => {
                 commit('setDatabases', response.data);
-                let db_version = response?.data[0]?.versions[0];
-                db_version.database = response?.data[0];
-                commit('sandbox/setDatabaseVersionObject', db_version, { root: true });
+                commit('setDatabaseToSandBox', [response?.data[0]?.id]);
             }) .catch((err) => {
                 commit('setError',  err.response?.data?.message,  { root: true });
                 if (!state.error) {

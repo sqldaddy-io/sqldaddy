@@ -1,21 +1,21 @@
 <template>
-  <div class="statistic_item">
+  <div class="statistic_item" v-bind:class="{ 'loading' :  $store.state.statistics.isLoading }">
     <div class="name">{{ statistic.name }}</div>
     <div class="badge-wrap" style="margin-top: 10px">
       <div class="badge">
-        <span>all time : {{ statistic.all_time }}</span>
+        <span>all time&nbsp;&nbsp;:&nbsp;&nbsp;{{ statistic.all_time }}</span>
       </div>
       <div class="badge">
-        <span>90 day : {{ statistic.last_90_days }}</span>
+        <span>90 day&nbsp;&nbsp;:&nbsp;&nbsp;{{ statistic.last_90_days }}</span>
       </div>
       <div class="badge">
-        <span>7 day : {{ statistic.last_7_days }}</span>
+        <span>7 day&nbsp;&nbsp;:&nbsp;&nbsp;{{ statistic.last_7_days }}</span>
       </div>
-      <div class="badge-wrap inline" v-if="$store.state.databases.databases" >
+      <div class="badge-wrap inline" v-if="statistic.versions ?? $store.state.databases.databases" >
         <div class="badge">
-          <span>versions: </span>
+          <span>versions&nbsp;:</span>
         </div>
-        <template v-for="version in $store.getters['databases/getDatabase'](statistic.id)?.versions"  v-bind:key="version.id">
+        <template v-for="version in statistic.versions ?? $store.getters['databases/getDatabase'](statistic.id)?.versions"  v-bind:key="version.id">
           <router-link @click="$store.commit('databases/setDatabaseToSandBox', [statistic.id, version.id])"  :to="{ name: 'page:index', query: { database: statistic.name, version: version.name }}" class="logo">
             <div class="badge">
               <span>{{ version.name }}</span>
@@ -43,9 +43,6 @@ export default {
       type: Object,
       required: true,
     }
-  },
-  action:{
-
   }
 }
 </script>
@@ -127,4 +124,36 @@ export default {
     .statistic_item a:hover{
       transform: scale(1.1);
     }
+
+
+    @keyframes placeHolderShimmer{
+      0%{
+        background-position: -468px 0
+      }
+      100%{
+        background-position: 468px 0
+      }
+    }
+
+    .statistic_item.loading .badge{
+      animation-duration: 1.25s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: infinite;
+      animation-name: placeHolderShimmer;
+      animation-timing-function: linear;
+      background: darkgray;
+      background: linear-gradient(to right, #eeeeee 10%, #dddddd 18%, #eeeeee 33%);
+      background-size: 800px 104px;
+      position: relative;
+    }
+    .statistic_item.loading .badge span, .statistic_item.loading .name{
+      visibility: hidden;
+    }
+
+    .dark .statistic_item.loading .badge{
+      background: linear-gradient(to right, #272727 10%, #3c3c3c 18%, #272727 33%);
+      background-size: 800px 104px;
+    }
+
+
 </style>

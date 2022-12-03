@@ -50,6 +50,7 @@ export const sandboxModule = {
             if(state.page?.databaseVersion?.database?.name === undefined){
                 return null;
             }
+
             return state.page?.databaseVersion?.database?.name + ' ' + state.page?.databaseVersion?.name;
         },
         validate: (state) => {
@@ -68,6 +69,9 @@ export const sandboxModule = {
     mutations: {
         setDatabaseVersionObject(state, data) {
             state.page.databaseVersion = data;
+            if( state.page?.databaseVersion?.database?.name){
+                this.commit('setMetaTitle', state.page?.databaseVersion?.database?.name + ' ' + state.page?.databaseVersion?.name, {root: true});
+            }
         },
         setLoading(state, data) {
             state.isLoading = data;

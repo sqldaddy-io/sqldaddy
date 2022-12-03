@@ -10,6 +10,9 @@ export default {
   'name': 'SandBoxIndex',
   components: {SandBoxList},
   created() {
+    this.setMetaDescription(null);
+  },
+  mounted() {
     this.loadDatabases();
     if (this.$route?.params?.path) {
       this.setPathPage(this.$route.params.path);
@@ -28,6 +31,8 @@ export default {
   },
   methods: {
     ...mapActions({
+      'setMetaTitle': 'setMetaTitle',
+      'setMetaDescription': 'setMetaDescription',
       'loadDatabases': 'databases/loadDatabases',
       'setPathPage': 'sandbox/setPathPage',
     }),
