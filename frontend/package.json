@@ -1,6 +1,6 @@
 {
   "name": "sqldaddy.io",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -13,7 +13,7 @@
     "codemirror": "^6.0.1",
     "core-js": "^3.8.3",
     "json2md": "^2.0.0",
-    "nano-markdown": "^1.2.1",
+    "marked": "^4.2.3",
     "vue": "^3.2.13",
     "vue-codemirror": "^6.1.1",
     "vue-meta": "^3.0.0-alpha.10",

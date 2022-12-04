@@ -1,6 +1,6 @@
 <template>
-  <div className="row-box">
-    <div className="sql-box">
+  <div class="row-box">
+    <div class="sql-box">
       <!--    <code-mirror :swcMinify="false" :wrap="true" v-model="updateScriptRequest" :basic="true" :extensions="[myTheme]"/>-->
       <codemirror
           v-model="updateScriptRequest"
@@ -21,7 +21,7 @@
 import {mapGetters} from 'vuex'
 import {EditorView} from "codemirror";
 import {Codemirror} from 'vue-codemirror'
-const nano = require('nano-markdown');
+const marked = require('marked');
 export default {
   name: 'SandBoxItem',
   components: {Codemirror},
@@ -51,7 +51,7 @@ export default {
     },
     response: {
       get() {
-        return nano(this.getScriptResponse(this.script.response));
+        return marked.parse(this.getScriptResponse(this.script.response));
       }
     }
   },
@@ -84,7 +84,9 @@ export default {
     return {
       extensions,
     }
-  }
+  },
+
+
 }
 </script>
 
