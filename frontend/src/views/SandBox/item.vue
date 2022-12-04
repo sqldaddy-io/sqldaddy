@@ -1,33 +1,30 @@
 <template>
-  <div class="row-box">
-  <div class="sql-box">
-<!--    <code-mirror :swcMinify="false" :wrap="true" v-model="updateScriptRequest" :basic="true" :extensions="[myTheme]"/>-->
-    <codemirror
-        v-model="updateScriptRequest"
-        placeholder="your sql code goes here..."
-        :indent-with-tab="true"
-        :tab-size="2"
-        :extensions="extensions"
+  <div className="row-box">
+    <div className="sql-box">
+      <!--    <code-mirror :swcMinify="false" :wrap="true" v-model="updateScriptRequest" :basic="true" :extensions="[myTheme]"/>-->
+      <codemirror
+          v-model="updateScriptRequest"
+          placeholder="your sql code goes here..."
+          :indent-with-tab="true"
+          :tab-size="2"
+          :extensions="extensions"
 
-    />
-  </div>
-  <div class="response-box table-responsive">
-    <Markdown :source="response"/>
-  </div>
+      />
+    </div>
+    <div class="response-box table-responsive" v-html="response">
+    </div>
   </div>
 </template>
 
 
 <script>
-
-import { mapGetters} from 'vuex'
-import { EditorView, basicSetup} from "codemirror";
-import { Codemirror } from 'vue-codemirror'
-import Markdown from 'vue3-markdown-it';
+import {mapGetters} from 'vuex'
+import {EditorView} from "codemirror";
+import {Codemirror} from 'vue-codemirror'
+const nano = require('nano-markdown');
 export default {
   name: 'SandBoxItem',
-  components: {Markdown,Codemirror},
-
+  components: {Codemirror},
   props: {
     script: {
       type: Object,
@@ -45,11 +42,17 @@ export default {
       'getScriptResponse': 'sandbox/getScriptResponse',
     }),
     updateScriptRequest: {
-      get() { return this.getScriptRequest(this.index) },
-      set(value) { this.$store.commit('sandbox/updateScriptRequest', {id:this.index, value: value } ) }
+      get() {
+        return this.getScriptRequest(this.index)
+      },
+      set(value) {
+        this.$store.commit('sandbox/updateScriptRequest', {id: this.index, value: value})
+      }
     },
     response: {
-      get() { return this.getScriptResponse(this.script.response)}
+      get() {
+        return nano(this.getScriptResponse(this.script.response));
+      }
     }
   },
   setup() {
@@ -77,7 +80,7 @@ export default {
         border: "none"
       }
     })
-    const extensions = [basicSetup, darkTheme]
+    const extensions = [darkTheme]
     return {
       extensions,
     }
@@ -86,8 +89,9 @@ export default {
 </script>
 
 <style scoped>
-.error-badge{
-  color: #f08080;padding-left: 0.3rem;
+.error-badge {
+  color: #f08080;
+  padding-left: 0.3rem;
   border-left: 3px solid #f08080;
 }
 </style>
