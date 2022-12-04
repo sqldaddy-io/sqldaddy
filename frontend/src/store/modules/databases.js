@@ -1,6 +1,6 @@
 import API from "@/api";
 import config from "@/config";
-
+import router from '@/router'
 export const databasesModule = {
     state: () => ({
         databases: null,
@@ -32,9 +32,6 @@ export const databasesModule = {
     },
     actions: {
         loadDatabases({state, commit}){
-            if(state.databases){
-                return true;
-            }
             let axiosConfig = {
                 headers: {
                     'accept': 'application/json',
@@ -42,7 +39,21 @@ export const databasesModule = {
             };
             API.get(config.hostname + '/api/databases',  axiosConfig).then((response) => {
                 commit('setDatabases', response.data);
-                commit('setDatabaseToSandBox', [response?.data[0]?.id]);
+                let db_id = null;
+                let dbv_id = null;
+                if(router.currentRoute?.value?.query?.database){
+                   db_id = (state.databases).find(x => x.name === router.currentRoute?.value?.query.database)?.id;
+                }
+                if(!db_id){
+                    db_id = response?.data[0]?.id;
+                }
+                if(router.currentRoute?.value?.query?.version){
+                    dbv_id = ((state.databases).find(x => x.id === db_id).versions.find(x => x.name === router.currentRoute?.value?.query?.version))?.id;
+                }
+                if(!dbv_id){
+                    dbv_id = null;
+                }
+                commit('setDatabaseToSandBox', [db_id, dbv_id]);
             }) .catch((err) => {
                 commit('setError',  err.response?.data?.message,  { root: true });
                 if (!state.error) {
