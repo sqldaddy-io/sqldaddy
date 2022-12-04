@@ -1,15 +1,7 @@
 <template>
   <div class="row-box">
     <div class="sql-box">
-      <!--    <code-mirror :swcMinify="false" :wrap="true" v-model="updateScriptRequest" :basic="true" :extensions="[myTheme]"/>-->
-      <codemirror
-          v-model="updateScriptRequest"
-          placeholder="your sql code goes here..."
-          :indent-with-tab="true"
-          :tab-size="2"
-          :extensions="extensions"
-
-      />
+      <prism-editor class="my-editor" v-model="updateScriptRequest"  :highlight="highlighter" line-numbers></prism-editor>
     </div>
     <div class="response-box table-responsive" v-html="response">
     </div>
@@ -18,13 +10,16 @@
 
 
 <script>
+import { PrismEditor } from "vue-prism-editor";
+import 'vue-prism-editor/dist/prismeditor.min.css';
+
 import {mapGetters} from 'vuex'
-import {EditorView} from "codemirror";
-import {Codemirror} from 'vue-codemirror'
 const marked = require('marked');
 export default {
   name: 'SandBoxItem',
-  components: {Codemirror},
+  components: {
+    PrismEditor,
+  },
   props: {
     script: {
       type: Object,
@@ -55,45 +50,51 @@ export default {
       }
     }
   },
-  setup() {
-    const darkTheme = EditorView.theme({
-      ".dark &": {
-        color: "white",
-        backgroundColor: "#2E2E2E"
-      },
-      ".dark .cm-content": {
-        caretColor: "#0e9"
-      },
-      ".dark &.cm-focused .cm-cursor": {
-        borderLeftColor: "#0e9"
-      },
-      ".dark &.cm-focused .cm-selectionBackground, ::selection": {
-        backgroundColor: "#074"
-      },
-      ".dark & .cm-gutters": {
-        backgroundColor: "rgba(62,62,62,0.74)",
-        border: "none"
-      },
-      ".dark & .cm-activeLineGutter": {
-        backgroundColor: "#cceeff44",
-        color: '#fff',
-        border: "none"
-      }
-    })
-    const extensions = [darkTheme]
-    return {
-      extensions,
-    }
+  data: () => ({ code: 'console.log("Hello World")' }),
+  methods: {
+    highlighter(code) {
+      return code;
+    },
   },
-
 
 }
 </script>
 
-<style scoped>
+<style >
 .error-badge {
   color: #f08080;
   padding-left: 0.3rem;
   border-left: 3px solid #f08080;
+}
+
+.my-editor {
+  background: white;
+  color: #2c3e50;
+  font-family: monospace;
+  line-height: 1.4;
+}
+
+.dark .my-editor{
+  background: #2e2e2e;
+  color: white;
+}
+
+
+.prism-editor-wrapper .prism-editor__line-number{
+  text-align: center;
+}
+.prism-editor-wrapper .prism-editor__line-numbers{
+  background-color: whitesmoke !important;
+  color: #6c6c6c;
+}
+
+.dark .prism-editor-wrapper .prism-editor__line-numbers{
+  background-color: #3a3a3a!important;
+}
+
+
+/* optional class for removing the outline */
+.prism-editor__textarea:focus {
+  outline: none;
 }
 </style>
