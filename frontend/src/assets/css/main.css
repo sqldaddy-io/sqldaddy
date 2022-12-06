@@ -1093,6 +1093,7 @@ a{
   flex: 1;
   border: 1px solid #C6C6C6;
   height: fit-content;
+  max-width: 50%;
 }
 
 .dark .sql-box{
@@ -1112,6 +1113,12 @@ a{
 @media (max-width: 800px) {
   .row-box {
     display: block;
+  }
+  .sql-box{
+    max-width: 100%;
+  }
+  .response-box table{
+    margin-top: 15px;
   }
   .loading-page-line {
     width: 100%;
@@ -1220,3 +1227,5 @@ i.unicode{
   font-size: 25px;
   font-style: normal;
 }
+
+

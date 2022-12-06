@@ -32,6 +32,7 @@ export const databasesModule = {
     },
     actions: {
         loadDatabases({state, commit}){
+            commit('setError', null,  { root: true });
             let axiosConfig = {
                 headers: {
                     'accept': 'application/json',

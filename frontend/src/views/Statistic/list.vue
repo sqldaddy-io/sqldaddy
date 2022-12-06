@@ -1,6 +1,9 @@
 <template>
  <div>
    <h1 class="title">Database Environments</h1>
+   <div class="error-line" v-if="$store.state.error" style="margin-bottom: 20px">
+     <p>{{ $store.state.error }}</p>
+   </div>
    <div class="statistic_list">
      <transition-group name="list"  mode="out-in">
      <StatisticItem

@@ -122,18 +122,6 @@
 
     </div>
 
-    <div class="message bright_bс" id="donate">
-      <h2>Support the project</h2>
-      <p>
-        This application is completely free (like air) and is maintained at the expense of the author. If you want to
-        support the project, you can buy the author a coffee. Donations will be used to pay for infrastructure and
-        development of the service.
-      </p>
-      <div class="image_buttons">
-        <a href="https://www.patreon.com/emrdev"><img height="75" src="@/assets/img/become-a-patron-button.png" alt=""></a>
-        <a href="https://www.buymeacoffee.com/emr_dev"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=emr_dev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"/></a>
-      </div>
-    </div>
 
   </div>
 </template>

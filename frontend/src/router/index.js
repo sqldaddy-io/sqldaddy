@@ -15,6 +15,11 @@ const routes = [
     name: 'about:index',
     component: () => import('../views/AboutView.vue')
   },
+  {
+    path: '/sponsors',
+    name: 'sponsor:index',
+    component: () => import('../views/SponsorView.vue')
+  },
 ]
 
 const router = createRouter({

@@ -1,5 +1,5 @@
 <template>
-  <span v-if="$store.state.sandbox.isLoading===false" @click="this.initPage"><i></i>&nbsp;run </span>
+  <span id="runButton" v-if="!$store.state.sandbox.isLoading" @click="this.initPage" title="Shortcut key: Ctrl+Enter or Command+Enter "><i></i>&nbsp;run </span>
   <span v-else> <i class="spinner"></i>&nbsp;&nbsp;run</span>
 </template>
 
@@ -8,6 +8,13 @@ import {mapActions} from 'vuex'
 
 export default {
   name: 'TheRunButton',
+  mounted() {
+    document.addEventListener('keydown', function(event)  {
+      if (document.getElementById('runButton') !== null && (event.ctrlKey || event.metaKey) && (event.keyCode === 13 || event.keyCode === 10) ) {
+        document.getElementById('runButton').click();
+      }
+    });
+  },
   methods: {
     ...mapActions({
       'initPage': 'sandbox/initPage'

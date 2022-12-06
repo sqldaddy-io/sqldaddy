@@ -17,8 +17,8 @@
             <a target="_blank" href="https://github.com/sqldaddy-io/sqldaddy/wiki/Features-&-roadmap">Roadmap</a>
           </li>
           <li>
-            <router-link :to="{ name: 'about:index', hash: '#donate'}" class="nav-link">
-              Donate/Support
+            <router-link :to="{ name: 'sponsor:index'}" class="nav-link">
+              Sponsors
             </router-link>
           </li>
         </ul>

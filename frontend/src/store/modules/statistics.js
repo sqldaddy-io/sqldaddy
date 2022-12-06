@@ -138,6 +138,7 @@ export const statisticsModule = {
     actions: {
         loadStatistics({state, commit}){
             commit('setLoading', true);
+            commit('setError', null,  { root: true });
             let axiosConfig = {
                 headers: {
                     'accept': 'application/json',
