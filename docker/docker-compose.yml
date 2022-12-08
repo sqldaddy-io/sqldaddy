@@ -232,6 +232,18 @@ services:
    entrypoint: /bin/sh -c "trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;"
 
 
+  sqlserver2022:
+    container_name: sqlserver2022
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    ports:
+      - "1422:1433"
+    environment:
+      SA_PASSWORD: ${SANDBOX_SQLSERVER_PASSWORD}
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+    networks:
+      - app-network
+
 
 #Docker Networks
 networks:

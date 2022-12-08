@@ -16,7 +16,7 @@ class SplitSql
         $delimiter = ";";
         $offset = 0;
         $fp = false;
-        $parse = '[\'"' . ($driver == "sql" ? '`#' : ($driver == "sqlite" ? '`[' : ($driver == "mssql" ? '[' : ''))) . ']|/\*|-- |$' . ($driver == "pgsql" ? '|\$[^$]*\$' : '');
+        $parse = '[\'"' . ($driver == "sql" ? '`#' : ($driver == "sqlite" ? '`[' : ($driver == "sqlsrv" ? '[' : ''))) . ']|/\*|-- |$' . ($driver == "pgsql" ? '|\$[^$]*\$' : '');
 
         while ($query != "") {
             if (!$offset && preg_match("~^$space*+DELIMITER\\s+(\\S+)~i", $query, $match)) {
@@ -46,7 +46,6 @@ class SplitSql
                         }
 
                     } else { // end of a query
-                        $empty = false;
                         $array_queries[] = substr($query, 0, $pos);
                         $query = substr($query, $offset);
                         $offset = 0;

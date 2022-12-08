@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 class DatabaseParam
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
+    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
     #[ORM\Column]
     private ?int $id = null;
 
@@ -48,9 +48,12 @@ class DatabaseParam
 
     public function getConnectionParam($dbname = null, $username = null, $password = null): array
     {
-        $dns = ($dbname)?'dbname={dbname};':null;
+        $dns = match ($this->getDriver()) {
+            'sqlsrv' =>  "sqlsrv:Server={host};database={dbname};",
+            default => '{driver}:host={host};port={port};'.(($dbname)?'dbname={dbname};':null)
+        };
         return [
-            'dns' => strtr('{driver}:host={host};port={port};'.$dns,[
+            'dns' => strtr($dns, [
                 '{driver}' => $this->getDriver(),
                 '{host}' => $this->getHost(),
                 '{port}' => $this->getPort(),

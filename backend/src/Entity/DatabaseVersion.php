@@ -18,7 +18,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class DatabaseVersion
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
+    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
     #[ORM\Column]
     #[Groups(['database_read', 'page_read'])]
     private ?int $id = null;
