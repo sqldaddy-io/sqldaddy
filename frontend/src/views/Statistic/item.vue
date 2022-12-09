@@ -53,6 +53,8 @@ export default {
       border-radius: 25px;
       padding: 20px;
       max-width: 350px;
+      min-width: 300px;
+      flex-grow: 1;
     }
 
     .statistic_item .name{

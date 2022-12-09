@@ -35,7 +35,7 @@ export default {
 .statistic_list{
   display: flex;
   gap: 31px;
-  justify-content: center;
+  justify-content: start;
   flex-wrap: wrap;
 }
 .title{
