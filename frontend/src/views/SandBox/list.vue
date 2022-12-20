@@ -6,14 +6,16 @@
     <div class="error-line" v-if="$store.state.error" style="margin-bottom: 20px">
       <p>{{ $store.state.error }}</p>
     </div>
-    <transition-group name="plot-list">
-      <SandBoxItem
-       v-for="(script, index) in $store.state.sandbox.page.scripts"
-       :script="script"
-       :index="index"
-       v-bind:key="index"
-      />
-    </transition-group>
+    <draggable v-model="scriptsList"  item-key="sort">
+      <template #item="{element, index}">
+        <SandBoxItem
+            :script="element"
+            :index="index"
+            handle=".drag_handle"
+            v-bind:key="index"
+        />
+      </template>
+    </draggable>
     <div class="button-box">
       <button @click="$store.commit('sandbox/addScriptRow')"><span><i class="unicode">+</i>&nbsp;&nbsp;input</span></button>
       <button v-if="this.$store.state.sandbox.page?.path"  @click="showMarkDownDialog" ><span><i class="unicode">⎘</i>&nbsp;&nbsp;markdown</span></button>
@@ -27,9 +29,10 @@
 import {mapActions} from 'vuex'
 import SandBoxItem from "@/views/SandBox/item";
 import TheMarkDownDialog from "@/components/ui/TheMarkDownDialog";
+import draggable from 'vuedraggable'
 export default {
   name: 'SandBoxList',
-  components: {TheMarkDownDialog, SandBoxItem},
+  components: {TheMarkDownDialog, SandBoxItem, draggable},
   data() {
     return {
       markDownDialogShow: false
@@ -48,26 +51,25 @@ export default {
      this.markDownDialogShow = true;
     }
   },
+  computed: {
+    scriptsList: {
+      get() {
+        return this.$store.state.sandbox.page.scripts
+      },
+      set(scriptsList) {
+        scriptsList.forEach((element, index) => {
+          element.sort = index;
+        });
+        this.$store.commit('sandbox/updateScriptList', scriptsList)
+      }
+    }
+  }
 }
 </script>
 
 <style scoped>
-.plot-list-item {
-  display: inline-block;
-  margin-right: 10px;
-}
-.plot-list-enter-active,
-.plot-list-leave-active {
-  transition: all 0.4s ease;
-}
-.plot-list-enter-from,
-.plot-list-leave-to {
-  opacity: 0;
-  transform: translateY(130px);
-}
-.plot-list-move {
-  transition: transform 0.4s ease;
-}
+
+
 .loading-page-line{
   display: flex;
   align-items: center;

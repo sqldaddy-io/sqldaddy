@@ -1,6 +1,11 @@
 <template>
   <div class="row-box">
     <div class="sql-box">
+      <div class="tools">
+        <div class="item">
+          <i class="drag_handle">☰</i>
+        </div>
+      </div>
       <prism-editor class="my-editor" v-model="updateScriptRequest"  :highlight="highlighter" line-numbers></prism-editor>
     </div>
     <div class="response-box table-responsive" v-html="response">
@@ -61,6 +66,19 @@ export default {
 </script>
 
 <style >
+.tools .item{
+  cursor: default;
+}
+.tools i{
+  color: black;
+}
+.tools i.drag_handle{
+  cursor: grab;
+}
+.dark .tools i{
+  color: white;
+}
+
 .error-badge {
   color: #f08080;
   padding-left: 0.3rem;

@@ -28,7 +28,9 @@ class Script
     #[Groups(['page_read'])]
     private array $response = [];
 
-
+    #[ORM\Column(options: ['default' => 0])]
+    #[Groups(['page_read', 'page_write'])]
+    private int $sort = 0;
 
     public function __clone()
     {
@@ -91,5 +93,23 @@ class Script
 
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getSort(): int
+    {
+        return $this->sort;
+    }
+
+    /**
+     * @param int $sort
+     */
+    public function setSort(int $sort): void
+    {
+        $this->sort = $sort;
+    }
+
+
 
 }

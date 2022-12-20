@@ -51,6 +51,7 @@ class Page
     private ?DatabaseVersion $databaseVersion = null;
 
     #[ORM\OneToMany(mappedBy: 'page', targetEntity: Script::class, cascade: ['persist'])]
+    #[ORM\OrderBy(["sort" => "ASC", "id" => "ASC"])]
     #[Groups(['page_read', 'page_write'])]
     private Collection $scripts;
 

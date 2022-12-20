@@ -73,6 +73,9 @@ export const sandboxModule = {
                 this.commit('setMetaTitle', state.page?.databaseVersion?.database?.name + ' ' + state.page?.databaseVersion?.name, {root: true});
             }
         },
+        updateScriptList(state, data) {
+            state.page.scripts = data;
+        },
         setLoading(state, data) {
             state.isLoading = data;
         },
@@ -99,14 +102,9 @@ export const sandboxModule = {
         },
         addScriptRow(state) {
             state.page.scripts.push({
-                'request': '\n' +
-                    '\n' +
-                    '\n' +
-                    '\n' +
-                    '\n' +
-                    '\n' +
-                    '\n',
+                'request': '',
                 'response': [],
+                'sort': state.page.scripts.length
             });
         },
     },

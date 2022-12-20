@@ -1081,6 +1081,9 @@ a{
 }
 
 
+.box > div{
+  width: 100%;
+}
 
 .row-box{
   display: flex;
@@ -1091,14 +1094,24 @@ a{
 }
 .sql-box{
   flex: 1;
-  border: 1px solid #C6C6C6;
   height: fit-content;
   max-width: 50%;
+  display: flex;
+  gap: 8px;
 }
 
-.dark .sql-box{
+
+.sql-box .prism-editor-wrapper{
+   border: 1px solid #C6C6C6;
+}
+
+
+.dark .sql-box .prism-editor-wrapper{
   border: 1px solid #3E3D3D;
 }
+
+
+
 
 
 .response-box{
