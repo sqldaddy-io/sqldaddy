@@ -18,7 +18,7 @@
     </draggable>
     <div class="button-box">
       <button @click="$store.commit('sandbox/addScriptRow')"><span><i class="unicode">+</i>&nbsp;&nbsp;input</span></button>
-      <button v-if="this.$store.state.sandbox.page?.path"  @click="showMarkDownDialog" ><span><i class="unicode">⎘</i>&nbsp;&nbsp;markdown</span></button>
+      <button v-if="this.$store.state.sandbox.page?.path"  @click="showMarkDownDialog" ><span><i class="unicode">⎘</i>&nbsp;&nbsp;share</span></button>
       <button  @click="resetPage" ><span><i class="unicode">⑃</i>&nbsp;&nbsp;reset</span></button>
     </div>
     <TheMarkDownDialog v-model:show="markDownDialogShow"/>

@@ -338,6 +338,8 @@ main .wrapper .box .button-box {
   display: flex;
   align-items: center;
   width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 @media (max-width: 768px) {
   main .wrapper .box .button-box {
@@ -350,7 +352,6 @@ main .wrapper .box .button-box button {
   background: #E4E4E4;
   border-radius: 7px;
   border: 0px;
-  margin-right: 10px;
   padding: 6px 13px;
   cursor: pointer;
 }
@@ -820,8 +821,7 @@ footer .wrapper .right-box a svg .color {
   align-items: center;
   background: #2E2E2E;
   border-radius: 7px;
-  border: 0px;
-  margin-right: 10px;
+  border: 0;
   padding: 6px 13px;
   cursor: pointer;
 }

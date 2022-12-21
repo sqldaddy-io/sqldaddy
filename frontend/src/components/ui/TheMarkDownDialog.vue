@@ -5,9 +5,13 @@
       <div @click.stop class="modal-box">
         <div class="cross" @click.stop="hideDialog"></div>
         <pre id="PreMarkdown" v-html="this.getMarkDown()"></pre>
+        <pre id="url" v-show="false" v-text="url"></pre>
         <div class="button-box">
-          <button @click="copyToClipboard()">
+          <button @click="copyToClipboard('PreMarkdown')">
             <span><i class="unicode">⎘</i>&nbsp;&nbsp;copy markdown</span>
+          </button>
+          <button @click="copyToClipboard('url')">
+            <span><i class="unicode">⎘</i>&nbsp;&nbsp;copy only url</span>
           </button>
         </div>
       </div>
@@ -18,11 +22,15 @@
 import {mapGetters} from 'vuex'
 import toggleMixin from "@/mixins/toggleMixin";
 import json2md from "json2md";
-import config from "@/config";
 
 export default {
   name: 'TheMarkDownDialog',
   mixins: [toggleMixin],
+  data() {
+    return {
+      url: window.location.href
+    }
+  },
   computed: {
     ...mapGetters({
       'getScriptResponse': 'sandbox/getScriptResponse',
@@ -42,12 +50,12 @@ export default {
       });
       data +=
       json2md({
-        p: 'Demo in [sqldaddy.io]('+ config.hostname + '/'+this.$store.state.sandbox.page.path +')'
+        p: 'Demo in [sqldaddy.io]('+ this.url +')'
       });
       return data;
     },
-    copyToClipboard() {
-      const copyText = document.getElementById('PreMarkdown').textContent
+    copyToClipboard(el_id) {
+      const copyText = document.getElementById(el_id).textContent
       const textArea = document.createElement('textarea')
       textArea.textContent = copyText
       document.body.append(textArea)
@@ -65,14 +73,12 @@ pre {
   max-height: 300px;
   overflow: auto;
   margin-bottom: 15px;
-  border: 1px dashed black;
   border-radius: 5px;
   padding: 15px;
 }
 
 .dark pre {
   color: #fff;
-  border: 1px dashed #626262;
 }
 
 .dark button {
@@ -85,4 +91,5 @@ button:active {
 .dark button:active {
   background: #3c3c3c !important;
 }
+
 </style>
