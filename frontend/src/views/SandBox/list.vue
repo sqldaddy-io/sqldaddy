@@ -6,7 +6,7 @@
     <div class="error-line" v-if="$store.state.error" style="margin-bottom: 20px">
       <p>{{ $store.state.error }}</p>
     </div>
-    <draggable v-model="scriptsList"  item-key="sort">
+    <draggable v-model="scriptsList"  item-key="sort"  handle=".drag_handle">
       <template #item="{element, index}">
         <SandBoxItem
             :script="element"

@@ -71,6 +71,7 @@ export default {
 }
 .tools i{
   color: black;
+  font-style: normal;
 }
 .tools i.drag_handle{
   cursor: grab;
