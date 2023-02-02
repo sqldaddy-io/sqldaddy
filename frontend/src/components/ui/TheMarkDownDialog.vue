@@ -22,15 +22,11 @@
 import {mapGetters} from 'vuex'
 import toggleMixin from "@/mixins/toggleMixin";
 import json2md from "json2md";
+import config from "@/config";
 
 export default {
   name: 'TheMarkDownDialog',
   mixins: [toggleMixin],
-  data() {
-    return {
-      url: window.location.href
-    }
-  },
   computed: {
     ...mapGetters({
       'getScriptResponse': 'sandbox/getScriptResponse',
@@ -50,7 +46,7 @@ export default {
       });
       data +=
       json2md({
-        p: 'Demo in [sqldaddy.io]('+ this.url +')'
+        p: 'Demo in [sqldaddy.io]('+ config.hostname +'/'+ this.$store.state.sandbox.page.path+')'
       });
       return data;
     },
