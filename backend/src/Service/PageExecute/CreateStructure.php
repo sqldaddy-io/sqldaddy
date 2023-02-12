@@ -19,6 +19,6 @@ class CreateStructure
         $structure = $this->database->structure((string)$page->getDatabaseVersion());
         $this->database->setConnection($page->getDatabaseVersion()->getParam()->getConnectionParam());
         $this->database->execute((string)$page->getDatabaseVersion(), $structure->create($identifier, $password));
-       return true;
+        return true;
     }
 }

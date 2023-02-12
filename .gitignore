@@ -4,6 +4,7 @@
 
 
 /backend/.env
+/backend/.env.test
 /backend/.env.local
 /backend/.env.local.php
 /backend/.env.*.local
@@ -11,7 +12,8 @@
 /backend/public/bundles/
 /backend/var/
 /backend/vendor/
-
+/backend/phpunit.xml
+/backend/.phpunit.result.cache
 
 /frontend/.DS_Store
 /frontend/node_modules
