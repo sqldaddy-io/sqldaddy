@@ -8,28 +8,26 @@ services:
     App\:
         resource: '../src/'
         exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
             - '../src/Kernel.php'
 
     _instanceof:
-        App\Database\Structure\StructureInterface:
+        App\DatabaseSwitch\infrastructure\Structure\StructureInterface:
             tags: ['database.structure_tag']
-        App\Database\Executor\ExecutorInterface:
+        App\DatabaseSwitch\infrastructure\Executor\ExecutorInterface:
             tags: ['database.executor_tag']
 
 
-    App\State\PagePostProcessor:
+    App\SandBox\Application\StateProcessor\PagePostProcessor:
         bind:
             $decorated: '@api_platform.doctrine.orm.state.persist_processor'
 
-    App\State\PagePutProcessor:
+    App\SandBox\Application\StateProcessor\PagePutProcessor:
         bind:
             $decorated: '@api_platform.doctrine.orm.state.persist_processor'
 
-    App\EventListener\PagePostUpdateListener:
+    App\SandBox\Domain\Events\PagePostUpdateListener:
         tags:
             -
                 name: 'doctrine.orm.entity_listener'
                 event: 'postUpdate'
-                entity: 'App\Entity\Page'
+                entity: 'App\SandBox\Domain\Entity\Page'

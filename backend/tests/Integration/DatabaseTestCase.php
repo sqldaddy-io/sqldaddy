@@ -2,11 +2,11 @@
 
 namespace App\Tests\Integration;
 
-use App\Entity\Database;
-use App\Entity\DatabaseVersion;
-use App\Entity\Page;
-use App\Entity\Script;
-use App\Service\UrlGenerate;
+use App\SandBox\Domain\Entity\Database;
+use App\SandBox\Domain\Entity\DatabaseVersion;
+use App\SandBox\Domain\Entity\Page;
+use App\SandBox\Domain\Entity\Script;
+use App\SandBox\infrastructure\Service\UrlGenerate;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;

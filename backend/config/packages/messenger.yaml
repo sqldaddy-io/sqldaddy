@@ -3,4 +3,4 @@ framework:
         transports:
              async: '%env(MESSENGER_TRANSPORT_DSN)%'
         routing:
-             'App\Message\PageMessage': async
+             'App\SandBox\Domain\Bus\Message\PageMessage': async

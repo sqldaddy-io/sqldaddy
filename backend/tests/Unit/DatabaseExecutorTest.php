@@ -2,10 +2,10 @@
 
 namespace App\Tests\Unit;
 
-use App\Database\Executor\Executor;
-use App\Database\Executor\ExecutorInterface;
-use App\Database\Executor\PostgreSQL\PostgreSQLExecutor;
-use App\Database\Executor\SQLServer\SQLServerExecutor;
+use App\DatabaseSwitch\infrastructure\Executor\Executor;
+use App\DatabaseSwitch\infrastructure\Executor\ExecutorInterface;
+use App\DatabaseSwitch\infrastructure\Executor\PostgreSQL\PostgreSQLExecutor;
+use App\DatabaseSwitch\infrastructure\Executor\SQLServer\SQLServerExecutor;
 use PHPUnit\Framework\TestCase;
 
 

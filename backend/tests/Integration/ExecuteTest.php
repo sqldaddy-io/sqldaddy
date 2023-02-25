@@ -2,7 +2,7 @@
 
 namespace App\Tests\Integration;
 
-use App\Service\PageExecute\Execute;
+use App\SandBox\infrastructure\Service\PageExecute\Execute;
 
 class ExecuteTest extends DatabaseTestCase
 {

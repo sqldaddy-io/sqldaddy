@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Database\DependencyInjection\DatabasePass;
+use App\DatabaseSwitch\Application\DependencyInjection\DatabasePass;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel as BaseKernel;

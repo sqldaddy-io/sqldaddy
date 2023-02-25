@@ -2,7 +2,7 @@
 
 namespace App\Tests\Unit;
 
-use App\Service\SplitSql;
+use App\SandBox\infrastructure\Service\SplitSql;
 use PHPUnit\Framework\TestCase;
 
 class SplitSqlTest extends TestCase

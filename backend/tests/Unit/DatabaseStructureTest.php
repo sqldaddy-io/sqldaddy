@@ -2,11 +2,11 @@
 
 namespace App\Tests\Unit;
 
-use App\Database\Structure\MySQL\MySQL8Structure;
-use App\Database\Structure\PostgreSQL\PostgreSQL15Structure;
-use App\Database\Structure\SQLServer\SQLServer2022Structure;
-use App\Database\Structure\Structure;
-use App\Database\Structure\StructureInterface;
+use App\DatabaseSwitch\infrastructure\Structure\MySQL\MySQL8Structure;
+use App\DatabaseSwitch\infrastructure\Structure\PostgreSQL\PostgreSQL15Structure;
+use App\DatabaseSwitch\infrastructure\Structure\SQLServer\SQLServer2022Structure;
+use App\DatabaseSwitch\infrastructure\Structure\Structure;
+use App\DatabaseSwitch\infrastructure\Structure\StructureInterface;
 use PHPUnit\Framework\TestCase;
 
 class DatabaseStructureTest extends TestCase
