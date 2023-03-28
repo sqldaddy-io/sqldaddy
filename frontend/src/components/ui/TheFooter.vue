@@ -9,20 +9,14 @@
             </router-link>
           </li>
           <li>
-            <router-link :to="{ name: 'about:index', hash: '#contribute'}" class="nav-link">
-              Contribute
-            </router-link>
+            <a target="_blank" href="https://github.com/sqldaddy-io/sqldaddy/wiki/Features-&-roadmap">GitHub</a>
           </li>
           <li>
-            <a target="_blank" href="https://github.com/sqldaddy-io/sqldaddy/wiki/Features-&-roadmap">Roadmap</a>
-          </li>
-          <li>
-            <router-link :to="{ name: 'sponsor:index'}" class="nav-link">
+            <router-link :to="{ name: 'sponsor:index'}" class="nav-link" style="text-decoration: revert">
               Sponsors
             </router-link>
           </li>
         </ul>
-        <p>sqldaddy.io © created by emrdev</p>
       </div>
       <div class="right-box">
         <a target="_blank" href="https://www.buymeacoffee.com/emr_dev"><svg width="20" height="37" viewBox="0 0 25 37" fill="none" xmlns="http://www.w3.org/2000/svg">

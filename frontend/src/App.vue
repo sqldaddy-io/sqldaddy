@@ -61,7 +61,8 @@ export default {
     setMode() {
       const isDark = JSON.parse(localStorage.getItem('isDark')) ?? window.matchMedia('(prefers-color-scheme: dark)').matches;
       if (isDark === true) {
-        document.querySelector('.switcher').classList.add('dark');
+        document.getElementById("switch").checked = true;
+        document.getElementById('switch').classList.add('dark');
         document.querySelector('body').classList.add('dark');
       }
     }

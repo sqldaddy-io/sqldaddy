@@ -1,6 +1,5 @@
 <template>
  <div>
-   <h1 class="title">Database Environments</h1>
    <div class="error-line" v-if="$store.state.error" style="margin-bottom: 20px">
      <p>{{ $store.state.error }}</p>
    </div>
@@ -13,6 +12,8 @@
      />
      </transition-group>
    </div>
+
+
  </div>
 </template>
 

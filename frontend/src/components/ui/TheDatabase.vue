@@ -1,5 +1,4 @@
 <template>
-
   <p  v-if="$store.state.databases.databases &&  ['page:index'].includes($route.name)"  class="select"><text  @click="$emit('showDialogDatabase')" >{{ databaseName }}</text>
   <TheRunButton/>
   </p>

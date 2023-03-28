@@ -9,7 +9,7 @@
       <hr>
         <p>I will add your name and Twitter handle / GitHub profile to the list of sponsors for a year (don't forget to <a href="mailto:emrdev@outlook.com">email</a> me the details).</p>
       <div class="image_buttons">
-        <a href="https://www.buymeacoffee.com/emr_dev"><img src="https://img.buymeacoffee.com/button-api/?text=Become a sponsor/ Donate&emoji=&slug=emr_dev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"/></a>
+        <a href="https://www.buymeacoffee.com/sqldaddy"><img src="https://img.buymeacoffee.com/button-api/?text=Become a sponsor/ Donate&emoji=&slug=emr_dev&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"/></a>
       </div>
       <h2 style="margin-top: 25px">Sponsors</h2>
       <table class="table table-no-more" style="margin-top: 15px">
