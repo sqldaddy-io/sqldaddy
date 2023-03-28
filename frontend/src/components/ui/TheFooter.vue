@@ -19,7 +19,7 @@
         </ul>
       </div>
       <div class="right-box">
-        <a target="_blank" href="https://www.buymeacoffee.com/emr_dev"><svg width="20" height="37" viewBox="0 0 25 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a target="_blank" href="https://www.buymeacoffee.com/sqldaddy"><svg width="20" height="37" viewBox="0 0 25 37" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g clip-path="url(#clip0_7_59)">
             <path class="color" d="M22.3733 8.41393L22.3484 8.39934L22.291 8.38184C22.3141 8.40132 22.343 8.41263 22.3733 8.41393Z" fill="#0D0C22"/>
             <path class="color" d="M22.7347 10.998L22.707 11.0058L22.7347 10.998Z" fill="#0D0C22"/>

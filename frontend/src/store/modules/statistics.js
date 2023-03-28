@@ -7,9 +7,7 @@ export const statisticsModule = {
         statistics: [],
     }),
     getters: {
-        getStatistics: state => state.statistics.sort(function(a, b) {
-            return a.all_time < b.all_time;
-        }),
+        getStatistics: state => state.statistics.sort((a, b) => b.all_time - a.all_time),
         getStatistic:(state) => (id) => {
             return (state.statistics).find(x => x.id === id);
         },
