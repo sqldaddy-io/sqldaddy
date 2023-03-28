@@ -9,7 +9,11 @@
             </router-link>
           </li>
           <li>
-            <a target="_blank" href="https://github.com/sqldaddy-io/sqldaddy/wiki/Features-&-roadmap">GitHub</a>
+            <a target="_blank"  href="https://github.com/sqldaddy-io/sqldaddy/wiki/Features-&-roadmap">GitHub</a>
+          </li>
+
+          <li>
+            <a target="_blank" style="text-decoration: revert" href="https://forms.gle/JYKX68mhfTXDoj127">Feedback</a>
           </li>
           <li>
             <router-link :to="{ name: 'sponsor:index'}" class="nav-link" style="text-decoration: revert">
