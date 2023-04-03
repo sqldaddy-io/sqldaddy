@@ -1,7 +1,7 @@
 <template>
   <div class="statistic_item" v-bind:class="{ 'loading' :  $store.state.statistics.isLoading }">
     <div class="name">{{ statistic.name }}</div>
-    <div class="badge-wrap" style="margin-top: 10px">
+    <div class="badge-wrap" style="margin-top: 10px; border-top: unset">
       <div class="badge">
         <span>all time&nbsp;&nbsp;:&nbsp;&nbsp;{{ statistic.all_time }}</span>
       </div>
@@ -69,6 +69,9 @@ export default {
       flex-direction: column;
       gap: 20px;
       align-items: flex-start;
+      border-top: 1px solid #cac8c8;
+      padding-top: 20px;
+      width: 100%;
     }
     .statistic_item .badge-wrap.inline{
       flex-wrap: wrap;
@@ -102,7 +105,9 @@ export default {
       color: #000000;
     }
 
-
+    .dark .statistic_item .badge-wrap{
+      border-top: 1px solid #4b4b4b;
+    }
    .dark .statistic_item{
       background-color: #2E2E2E;
     }

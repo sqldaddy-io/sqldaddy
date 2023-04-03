@@ -2,6 +2,7 @@ FROM nginx:1.21-alpine
 WORKDIR /var/www
 COPY nginx.conf /etc/nginx/
 COPY default.conf /etc/nginx/conf.d/
+COPY default-ssl.conf /etc/nginx/conf.d/
 
 RUN apk update && apk upgrade && apk add --no-cache bash
 

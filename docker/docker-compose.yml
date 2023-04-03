@@ -21,12 +21,11 @@ services:
     tty: true
     environment:
       SERVER_NAME: ':3000'
-      MERCURE_PUBLISHER_JWT_KEY: '!ChangeThisMercureHubJWTSecretKey!'
-      MERCURE_SUBSCRIBER_JWT_KEY: '!ChangeThisMercureHubJWTSecretKey!'
+      MERCURE_PUBLISHER_JWT_KEY: ${MERCURE_PUBLISHER_JWT_KEY}
+      MERCURE_SUBSCRIBER_JWT_KEY: ${MERCURE_SUBSCRIBER_JWT_KEY}
       MERCURE_EXTRA_DIRECTIVES: |
         cors_origins *
         anonymous 1
-    command: /usr/bin/caddy run -config /etc/caddy/Caddyfile.dev
     volumes:
       - mercure_data:/data
       - mercure_config:/config
@@ -61,15 +60,12 @@ services:
     tty: true
     volumes:
       - ./../backend/:/var/www
-      - ./certbot/www:/var/www/certbot/:ro
-      - ./certbot/conf/:/etc/nginx/ssl/:ro
+      - ./certs:/etc/nginx/certs
     ports:
       - "80:80"
       - "443:443"
     networks:
       - app-network
-
-
 
   postgresmain:
     image: postgres:14-alpine
@@ -86,166 +82,6 @@ services:
       - app-network
 
 
-  postgres15:
-    image: postgres:15-alpine
-    container_name: postgres15
-    restart: unless-stopped
-    ports:
-      - "54315:5432"
-    environment:
-      POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
-      POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
-    networks:
-      - app-network
-
-  postgres14:
-   image: postgres:14-alpine
-   container_name: postgres14
-   restart: unless-stopped
-   ports:
-     - "54314:5432"
-   environment:
-     POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
-     POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
-   networks:
-     - app-network
-
-  postgres13:
-   image: postgres:13-alpine
-   container_name: postgres13
-   restart: unless-stopped
-   ports:
-     - "54313:5432"
-   environment:
-     POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
-     POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
-   networks:
-     - app-network
-
-  postgres12:
-   image: postgres:12-alpine
-   container_name: postgres12
-   restart: unless-stopped
-   ports:
-     - "54312:5432"
-   environment:
-     POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
-     POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
-   networks:
-     - app-network
-
-
-  postgres11:
-   image: postgres:11-alpine
-   container_name: postgres11
-   restart: unless-stopped
-   ports:
-     - "54311:5432"
-   environment:
-     POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
-     POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
-   networks:
-     - app-network
-
-  postgres10:
-   image: postgres:10-alpine
-   container_name: postgres10
-   restart: unless-stopped
-   ports:
-     - "54310:5432"
-   environment:
-     POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
-     POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
-   networks:
-     - app-network
-
-  postgres9.6:
-   image: postgres:9.6-alpine
-   container_name: postgres9.6
-   restart: unless-stopped
-   ports:
-     - "54396:5432"
-   environment:
-     POSTGRES_USER: ${SANDBOX_POSTGRES_USER}
-     POSTGRES_PASSWORD: ${SANDBOX_POSTGRES_PASSWORD}
-   networks:
-     - app-network
-
-  mysql8:
-   image: mysql:8.0
-   container_name: mysql8
-   restart: unless-stopped
-   ports:
-     - "33068:3306"
-   environment:
-     MYSQL_ROOT_PASSWORD: ${SANDBOX_MYSQL_PASSWORD}
-   networks:
-     - app-network
-
-
-
-  mysql57:
-   image: mysql:5.7
-   container_name: mysql57
-   restart: unless-stopped
-   command: [ "mysqld","--explicit_defaults_for_timestamp" ]
-   ports:
-     - "33057:3306"
-   environment:
-     MYSQL_ROOT_PASSWORD: ${SANDBOX_MYSQL_PASSWORD}
-   networks:
-     - app-network
-
-
-  mysql56:
-   image: mysql:5.6
-   container_name: mysql56
-   restart: unless-stopped
-   ports:
-     - "33066:3306"
-   environment:
-     MYSQL_ROOT_PASSWORD: ${SANDBOX_MYSQL_PASSWORD}
-   networks:
-     - app-network
-
-
-
-  mysql55:
-   image: mysql:5.5
-   container_name: mysql55
-   restart: unless-stopped
-   ports:
-     - "33065:3306"
-   environment:
-     MYSQL_ROOT_PASSWORD: ${SANDBOX_MYSQL_PASSWORD}
-   networks:
-     - app-network
-
-
-
-  certbot:
-   container_name: certbot
-   image: certbot/certbot:latest
-   volumes:
-     - ./certbot/www/:/var/www/certbot/:rw
-     - ./certbot/conf/:/etc/letsencrypt/:rw
-   entrypoint: /bin/sh -c "trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;"
-
-
-  sqlserver2022:
-    container_name: sqlserver2022
-    image: "mcr.microsoft.com/mssql/server:2022-latest"
-    ports:
-      - "1422:1433"
-    environment:
-      SA_PASSWORD: ${SANDBOX_SQLSERVER_PASSWORD}
-      ACCEPT_EULA: "Y"
-      MSSQL_PID: "Express"
-    networks:
-      - app-network
-
-
-#Docker Networks
 networks:
   app-network:
     driver: bridge

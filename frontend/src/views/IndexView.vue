@@ -14,7 +14,6 @@ export default {
     this.setMetaDescription(null);
   },
   mounted() {
-
     this.loadDatabases();
     this.loadStatistics();
   },

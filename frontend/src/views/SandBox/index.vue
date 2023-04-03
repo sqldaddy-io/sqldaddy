@@ -27,6 +27,9 @@ export default {
     '$store.state.error': function () {
       this.$store.state.sandbox.isLoading = false;
       this.$store.state.sandbox.isLoadingContent = false;
+    },
+    '$store.state.sandbox.page.databaseVersion': function () {
+      this.setMetaTitle(this.$store.state.sandbox.page?.databaseVersion?.database?.name + ' ' +this.$store.state.sandbox.page?.databaseVersion?.name);
     }
   },
   methods: {

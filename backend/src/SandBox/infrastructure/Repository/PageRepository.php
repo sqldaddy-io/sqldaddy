@@ -39,7 +39,7 @@ class PageRepository extends ServiceEntityRepository
                              count(p.id) filter(WHERE p.create_at > current_date - interval '7' day)  as last_7_days
                 from page as p
                      left join database_version as dv on dv.id = p.database_version_id
-                         left join database as d on d.id = dv.database_id
+                         right join database as d on d.id = dv.database_id
                 group by d.id";
 
         $stmt = $this->getEntityManager()->getConnection()->prepare($sql);

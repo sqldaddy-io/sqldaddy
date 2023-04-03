@@ -1,7 +1,5 @@
 /.idea
 /database
-/docker/certbot
-
 
 /backend/.env
 /backend/.env.test

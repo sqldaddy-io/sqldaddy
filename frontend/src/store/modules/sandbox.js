@@ -69,9 +69,7 @@ export const sandboxModule = {
     mutations: {
         setDatabaseVersionObject(state, data) {
             state.page.databaseVersion = data;
-            if( state.page?.databaseVersion?.database?.name){
-                this.commit('setMetaTitle', state.page?.databaseVersion?.database?.name + ' ' + state.page?.databaseVersion?.name, {root: true});
-            }
+
         },
         updateScriptList(state, data) {
             state.page.scripts = data;
