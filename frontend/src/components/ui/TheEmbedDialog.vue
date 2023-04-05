@@ -4,10 +4,8 @@
       <div @click.stop class="modal-box">
         <span class="close" @click.stop="hideDialog">&times;</span>
         <p class="header">Embed</p>
-
-
         <div class="shareInput">
-          <input type="text" disabled :value="this.iframe">
+          <input type="text" disabled :value="this.iframe.replace(':URL_PAGE', this.urlPage)">
           <button @click="copyToClipboard()">copy</button>
         </div>
       </div>
@@ -27,17 +25,18 @@ export default {
       iframe: `<iframe
   width="100%"
   height="415"
-  src="${config.hostname + '/' + this.$route.params?.path}"
+  src=":URL_PAGE"
   title="${this.$store.getters['getTitle']}"
   allowfullscreen>
 </iframe>`,
-
-
     }
   },
   mixins: [toggleMixin],
   computed: {
     ...mapGetters({}),
+    urlPage: {
+      get() { return config.hostname + '/' + this.$route.params?.path }
+    },
   },
   methods: {
     getSocialUrlSvg(name) {

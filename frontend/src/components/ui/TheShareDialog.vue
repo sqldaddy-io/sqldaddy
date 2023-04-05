@@ -12,7 +12,7 @@
           <ShareNetwork v-for="(network, index) in this.networks"
                         v-bind:key="index"
                         :network="network.network"
-                        :url="this.url"
+                        :url="this.urlPage"
                         title=""
           >
             <img :src="getSocialUrlSvg(network.network)"/>
@@ -21,7 +21,7 @@
         </div>
 
         <div class="shareInput">
-          <input type="text" disabled :value="this.shareOptions.url">
+          <input type="text" disabled :value="this.urlPage">
           <button @click="copyToClipboard()">copy</button>
         </div>
 
@@ -46,7 +46,7 @@ export default {
     return {
       shareEmbed: false,
       shareOptions: {
-        url: config.hostname + '/' + this.$route.params?.path,
+        url: this,
         title: '',
         text: '',
       },
@@ -101,7 +101,11 @@ export default {
   mixins: [toggleMixin],
   computed: {
     ...mapGetters({}),
+    urlPage: {
+      get() { return config.hostname + '/' + this.$route.params?.path }
+    },
   },
+
   methods: {
     shareEmbedShow() {
      this.shareEmbed = true;
