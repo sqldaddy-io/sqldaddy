@@ -18,24 +18,25 @@
     </draggable>
     <div class="button-box">
       <button @click="$store.commit('sandbox/addScriptRow')"><span><i class="unicode">+</i>&nbsp;&nbsp;input</span></button>
-      <button v-if="this.$store.state.sandbox.page?.path"  @click="showMarkDownDialog" ><span><i class="unicode">⎘</i>&nbsp;&nbsp;share</span></button>
+      <button v-if="this.$store.state.sandbox.page?.path"  @click="showShareDialog" ><span><i class="unicode">⎘</i>&nbsp;&nbsp;share</span></button>
       <button  @click="resetPage" ><span><i class="unicode">⑃</i>&nbsp;&nbsp;reset</span></button>
     </div>
-    <TheMarkDownDialog v-model:show="markDownDialogShow"/>
+    <TheShareDialog v-model:show="shareDialogShow"/>
   </div>
 </template>
 
 <script>
 import {mapActions} from 'vuex'
 import SandBoxItem from "@/views/SandBox/item";
-import TheMarkDownDialog from "@/components/ui/TheMarkDownDialog";
 import draggable from 'vuedraggable'
+import TheShareDialog from "@/components/ui/TheShareDialog.vue";
+
 export default {
   name: 'SandBoxList',
-  components: {TheMarkDownDialog, SandBoxItem, draggable},
+  components: {TheShareDialog, SandBoxItem, draggable},
   data() {
     return {
-      markDownDialogShow: false
+      shareDialogShow: false
     }
   },
   created() {
@@ -47,8 +48,8 @@ export default {
     ...mapActions({
       'resetPage': 'sandbox/resetPage'
     }),
-    showMarkDownDialog(){
-     this.markDownDialogShow = true;
+    showShareDialog(){
+     this.shareDialogShow = true;
     }
   },
   computed: {

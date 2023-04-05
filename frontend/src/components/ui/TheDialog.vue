@@ -1,10 +1,10 @@
 <template>
   <div class="modal open" v-if="show" @click.stop="hideDialog">
-    <div class="wrappar-modal">
+    <div class="modal-content">
       <div class="background-modal"></div>
-      <div @click.stop class="modal-box">
-        <div class="cross" @click.stop="hideDialog"></div>
-        <p>SELECT DATABASE:</p>
+      <div @click.stop class="modal-box database_switcher">
+        <span class="close" @click.stop="hideDialog">&times;</span>
+        <p>SELECT DATABASE</p>
         <div class="select">
           <select v-model="selectedDatabase">
             <option v-for="database in $store.state.databases.databases" v-bind:value="database.id"
